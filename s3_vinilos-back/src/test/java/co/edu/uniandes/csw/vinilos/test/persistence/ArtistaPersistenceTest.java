@@ -41,6 +41,51 @@ public class ArtistaPersistenceTest {
     
    private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
    
+     @Inject
+    UserTransaction utx;
+
+        /**
+     * Configuración inicial de la prueba.
+     */
+    @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Limpia las tablas que están implicadas en la prueba.
+     */
+    private void clearData() {
+        em.createQuery("delete from ArtistaEntity").executeUpdate();
+    }
+
+    /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     */
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            ArtistaEntity entity = factory.manufacturePojo(ArtistaEntity.class);
+
+            em.persist(entity);
+            artistas.add(entity);
+        }
+        System.out.println("Datos: " + artistas);
+    }
    @Deployment
    public static JavaArchive createDeployment() {
 
