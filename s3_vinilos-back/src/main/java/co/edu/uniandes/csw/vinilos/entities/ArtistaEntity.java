@@ -14,13 +14,53 @@ import javax.persistence.Entity;
 public class ArtistaEntity extends BaseEntity implements Serializable{
 
     private String name;
+    
+    private int edad;
      
+    private String disquera;
+    
+    private GeneroEntity genero;
+    
+    private int cantidadVinilos;
+
+    public int getCantidadVinilos() {
+        return cantidadVinilos;
+    }
+
+    public void setCantidadVinilos(int pCantidadVinilos) {
+        this.cantidadVinilos = pCantidadVinilos;
+    }
+
+    public GeneroEntity getGenero() {
+        return genero;
+    }
+
+    public void setGenero(GeneroEntity pGenero) {
+        this.genero = pGenero;
+    }
+    
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String pName) {
+        this.name = pName;
+    }
+   
+     public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int pEdad) {
+        this.edad = pEdad;
+    }
+    
+     public String getDisquera() {
+        return disquera;
+    }
+
+    public void setDisquera(String pDisquera) {
+        this.disquera = pDisquera;
     }
    
 }

@@ -41,7 +41,7 @@ public class ArtistaPersistenceTest {
     
    private List<ArtistaEntity> artistas = new ArrayList<ArtistaEntity>();
    
-     @Inject
+    @Inject
     UserTransaction utx;
 
         /**
