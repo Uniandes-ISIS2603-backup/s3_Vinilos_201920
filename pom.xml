@@ -11,6 +11,7 @@
     <name>s3_vinilos</name>
  
     <modules>
+        <module>s3_vinilos-back</module>
         <module>s3_vinilos-api</module>
     </modules>
     
