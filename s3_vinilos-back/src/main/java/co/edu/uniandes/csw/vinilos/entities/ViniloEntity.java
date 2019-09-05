@@ -4,14 +4,8 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.vinilos.entities;
-import co.edu.uniandes.csw.vinilos.podam.DateStrategy;
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import uk.co.jemos.podam.common.PodamStrategyValue;
-
 /**
  *
  * @author Jhoan Sebastian Diaz Romero
@@ -19,16 +13,12 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class ViniloEntity extends BaseEntity implements Serializable{
     private String nombre;
-    private String correo;
-    
-    @Temporal(TemporalType.DATE)
-    @PodamStrategyValue(DateStrategy.class)
-    private Date fechaNacimiento;
-    
-    private Integer celular;
-    private String ciudad;
-    private String pais;
-    private String direccion;
+    private String anio;
+    private String coleccion;
+    private double precio;
+    private String informacion;
+    private String estado;
+    private boolean disponible;
 
     /**
      * @return the nombre
@@ -38,48 +28,6 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the correo
-     */
-    public String getCorreo() {
-        return correo;
-    }
-
-    /**
-     * @param correo the correo to set
-     */
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    /**
-     * @return the fechaNacimiento
-     */
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    /**
-     * @param fechaNacimiento the fechaNacimiento to set
-     */
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    /**
-     * @return the celular
-     */
-    public Integer getCelular() {
-        return celular;
-    }
-
-    /**
-     * @param celular the celular to set
-     */
-    public void setCelular(Integer celular) {
-        this.celular = celular;
-    }
-    
-    /**
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
@@ -87,45 +35,89 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * @return the ciudad
+     * @return the anio
      */
-    public String getCiudad() {
-        return ciudad;
+    public String getAnio() {
+        return anio;
     }
 
     /**
-     * @param ciudad the ciudad to set
+     * @param anio the anio to set
      */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setAnio(String anio) {
+        this.anio = anio;
     }
 
     /**
-     * @return the pais
+     * @return the coleccion
      */
-    public String getPais() {
-        return pais;
+    public String getColeccion() {
+        return coleccion;
     }
 
     /**
-     * @param pais the pais to set
+     * @param coleccion the coleccion to set
      */
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setColeccion(String coleccion) {
+        this.coleccion = coleccion;
     }
 
     /**
-     * @return the direccion
+     * @return the precio
      */
-    public String getDireccion() {
-        return direccion;
+    public double getPrecio() {
+        return precio;
     }
 
     /**
-     * @param direccion the direccion to set
+     * @param precio the precio to set
      */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
+
+    /**
+     * @return the informacion
+     */
+    public String getInformacion() {
+        return informacion;
+    }
+
+    /**
+     * @param informacion the informacion to set
+     */
+    public void setInformacion(String informacion) {
+        this.informacion = informacion;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the disponible
+     */
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    /**
+     * @param disponible the disponible to set
+     */
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    
    
 }
