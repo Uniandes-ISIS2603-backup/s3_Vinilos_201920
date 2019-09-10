@@ -15,30 +15,28 @@ public class ArtistaEntity extends BaseEntity implements Serializable{
 
     private String name;
     
-    private int edad;
-     
-    private String disquera;
+    private GeneroEntity[] generos;
     
-    private GeneroEntity genero;
-    
-    private int cantidadVinilos;
+    private ViniloEntity[] vinilos;
 
-    public int getCantidadVinilos() {
-        return cantidadVinilos;
+    private String rutaFoto;
+
+    public String getRutaFoto() {
+        return rutaFoto;
     }
 
-    public void setCantidadVinilos(int pCantidadVinilos) {
-        this.cantidadVinilos = pCantidadVinilos;
-    }
-
-    public GeneroEntity getGenero() {
-        return genero;
-    }
-
-    public void setGenero(GeneroEntity pGenero) {
-        this.genero = pGenero;
+    public void setRutaFoto(String rutaFoto) {
+        this.rutaFoto = rutaFoto;
     }
     
+    public ViniloEntity[] getVinilos() {
+        return vinilos;
+    }
+
+    public void setVinilos(ViniloEntity[] vinilos) {
+        this.vinilos = vinilos;
+    }
+  
     public String getName() {
         return name;
     }
@@ -46,21 +44,13 @@ public class ArtistaEntity extends BaseEntity implements Serializable{
     public void setName(String pName) {
         this.name = pName;
     }
-   
-     public int getEdad() {
-        return edad;
+
+    public GeneroEntity[] getGeneros() {
+        return generos;
     }
 
-    public void setEdad(int pEdad) {
-        this.edad = pEdad;
-    }
-    
-     public String getDisquera() {
-        return disquera;
-    }
-
-    public void setDisquera(String pDisquera) {
-        this.disquera = pDisquera;
+    public void setGeneros(GeneroEntity[] generos) {
+        this.generos = generos;
     }
    
 }

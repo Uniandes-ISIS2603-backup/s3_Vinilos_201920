@@ -30,7 +30,7 @@ public class ArtistaPersistence {
       public ArtistaEntity find(Long nombreArtista){
         return em.find(ArtistaEntity.class, nombreArtista);
     }
-    
+      
     public List<ArtistaEntity> findAll(){
         TypedQuery<ArtistaEntity> query = em.createQuery("select u from ArtistaEntity u", ArtistaEntity.class);
         return query.getResultList();
