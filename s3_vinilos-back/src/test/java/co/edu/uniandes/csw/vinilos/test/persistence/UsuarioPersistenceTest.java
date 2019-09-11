@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vinilos.test.persistence;
 
 import co.edu.uniandes.csw.vinilos.entities.UsuarioEntity;
+import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
 import co.edu.uniandes.csw.vinilos.persistence.UsuarioPersistence;
 import java.util.ArrayList;
 import java.util.List;

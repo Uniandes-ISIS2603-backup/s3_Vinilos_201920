@@ -47,6 +47,21 @@ public class UsuarioPersistence {
         return query.getResultList();
     }
     
+    public UsuarioEntity findbyEMail(String correo){
+        TypedQuery<UsuarioEntity> query = em.createQuery("select e from UsuarioEntity e where e.correo = :correo", UsuarioEntity.class);
+        query = query.setParameter("correo", correo);
+        List<UsuarioEntity> sameName = query.getResultList();
+        UsuarioEntity result;
+        if(sameName == null){
+            result = null;
+        } else if(sameName.isEmpty()){
+            result = null;
+        } else {
+            result = sameName.get(0);
+        }
+        return result;
+    }
+    
     /*
     Actualiza un usuario en la base de datos
     */
