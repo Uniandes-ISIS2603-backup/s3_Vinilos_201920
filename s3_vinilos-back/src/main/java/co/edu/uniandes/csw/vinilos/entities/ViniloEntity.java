@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.vinilos.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author Jhoan Sebastian Diaz Romero
@@ -20,6 +22,14 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private String estado;
     private boolean disponible;
 
+    @PodamExclude
+    @OneToOne
+    private PedidoEntity pedidoCompra;
+    
+    @PodamExclude
+    @OneToOne
+    private PedidoEntity pedidoIntercambio ;
+    
     /**
      * @return the nombre
      */
@@ -116,6 +126,22 @@ public class ViniloEntity extends BaseEntity implements Serializable{
      */
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+
+    public PedidoEntity getPedidoCompra() {
+        return pedidoCompra;
+    }
+
+    public void setPedidoCompra(PedidoEntity pedidoCompra) {
+        this.pedidoCompra = pedidoCompra;
+    }
+
+    public PedidoEntity getPedidoIntercambio() {
+        return pedidoIntercambio;
+    }
+
+    public void setPedidoIntercambio(PedidoEntity pedidoIntercambio) {
+        this.pedidoIntercambio = pedidoIntercambio;
     }
 
     

@@ -9,8 +9,12 @@ import co.edu.uniandes.csw.vinilos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -31,6 +35,54 @@ public class PedidoEntity extends BaseEntity implements Serializable{
     private String observacion;
     private TipoPedido tipo;
    
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity usuario;
+    
+    @PodamExclude
+    @OneToOne(mappedBy = "vinilosCompra", fetch=FetchType.LAZY)
+    private ViniloEntity vinilosCompra;
+    
+    @PodamExclude
+    @OneToOne(mappedBy = "vinilosIntercambio", fetch=FetchType.LAZY)
+    private ViniloEntity vinilosIntercambio;
+    
+    @PodamExclude
+    @OneToOne(mappedBy = "envio", fetch=FetchType.LAZY)
+    private EnvioEntity envio;
+
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
+
+    public ViniloEntity getVinilosCompra() {
+        return vinilosCompra;
+    }
+
+    public void setVinilosCompra(ViniloEntity vinilosCompra) {
+        this.vinilosCompra = vinilosCompra;
+    }
+
+    public ViniloEntity getVinilosIntercambio() {
+        return vinilosIntercambio;
+    }
+
+    public void setVinilosIntercambio(ViniloEntity vinilosIntercambio) {
+        this.vinilosIntercambio = vinilosIntercambio;
+    }
+
+    public EnvioEntity getEnvio() {
+        return envio;
+    }
+
+    public void setEnvio(EnvioEntity envio) {
+        this.envio = envio;
+    }
+    
     public Date getFechaGeneracion()
     {
         return fechaGeneracion;

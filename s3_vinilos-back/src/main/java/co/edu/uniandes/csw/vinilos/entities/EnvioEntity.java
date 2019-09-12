@@ -46,5 +46,14 @@ public class EnvioEntity extends BaseEntity implements Serializable
     public void setEnviado(boolean enviado) {
         this.enviado = enviado;
     }
+
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
+    }
    
+    
 }

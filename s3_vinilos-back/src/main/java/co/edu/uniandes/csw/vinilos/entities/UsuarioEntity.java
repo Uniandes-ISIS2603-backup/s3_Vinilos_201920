@@ -7,10 +7,14 @@ package co.edu.uniandes.csw.vinilos.entities;
 
 import co.edu.uniandes.csw.vinilos.podam.DateStrategy;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -52,6 +56,11 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     direccion del usuario
     */
     private String direccion;
+    
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "editorial")
+    private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
     
     /////// Gets
     /*
@@ -143,5 +152,22 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public UsuarioEntity(){
         
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<PedidoEntity> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<PedidoEntity> pedidos) {
+        this.pedidos = pedidos;
+    }
+    
     
 }
