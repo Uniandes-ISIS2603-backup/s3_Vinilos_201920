@@ -8,8 +8,10 @@ import co.edu.uniandes.csw.vinilos.podam.DateStrategy;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import java.util.Date;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
@@ -21,8 +23,13 @@ public class EnvioEntity extends BaseEntity implements Serializable
 {
      @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
- private Date fecha;
+    private Date fecha;
+       
     private boolean enviado;
+    
+    @PodamExclude
+    @OneToOne
+    private PedidoEntity pedido;
     
     public Date getFecha() {
         return fecha;
