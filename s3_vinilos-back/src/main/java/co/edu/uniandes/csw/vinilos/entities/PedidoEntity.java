@@ -35,7 +35,7 @@ public class PedidoEntity extends BaseEntity implements Serializable{
     private String observacion;
     private TipoPedido tipo;
    
-    @PodamExclude
+    /*@PodamExclude
     @ManyToOne
     private UsuarioEntity usuario;
     
@@ -81,7 +81,7 @@ public class PedidoEntity extends BaseEntity implements Serializable{
 
     public void setEnvio(EnvioEntity envio) {
         this.envio = envio;
-    }
+    }*/
     
     public Date getFechaGeneracion()
     {

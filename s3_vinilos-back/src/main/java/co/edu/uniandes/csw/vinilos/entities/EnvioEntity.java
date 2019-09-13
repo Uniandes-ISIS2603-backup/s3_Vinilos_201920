@@ -21,15 +21,15 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class EnvioEntity extends BaseEntity implements Serializable 
 {
-     @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
        
     private boolean enviado;
     
-    @PodamExclude
+  /*  @PodamExclude
     @OneToOne
-    private PedidoEntity pedido;
+    private PedidoEntity pedido;*/
     
     public Date getFecha() {
         return fecha;
@@ -47,13 +47,13 @@ public class EnvioEntity extends BaseEntity implements Serializable
         this.enviado = enviado;
     }
 
-    public PedidoEntity getPedido() {
+    /*public PedidoEntity getPedido() {
         return pedido;
     }
 
     public void setPedido(PedidoEntity pedido) {
         this.pedido = pedido;
-    }
+    }*/
    
     
 }
