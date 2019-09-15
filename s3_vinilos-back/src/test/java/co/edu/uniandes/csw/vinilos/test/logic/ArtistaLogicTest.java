@@ -68,7 +68,7 @@ public class ArtistaLogicTest {
     }
     
     @Test (expected = BusinessLogicException.class)
-    public void crearViniloNombreNull() throws BusinessLogicException {
+    public void crearArtistaNombreNull() throws BusinessLogicException {
         
         ArtistaEntity newEntity = factory.manufacturePojo(ArtistaEntity.class);
         newEntity.setName(null);
