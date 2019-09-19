@@ -46,9 +46,9 @@ public class UsuarioLogicTest {
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(UsuarioEntity.class)
-                .addClass(UsuarioLogic.class)
-                .addClass(UsuarioPersistence.class)
+                .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(UsuarioLogic.class.getPackage())
+                .addPackage(UsuarioPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -70,7 +70,7 @@ public class UsuarioLogicTest {
         }
     }
     
-    @Test(expected = BusinessLogicException.class)
+    @Test
     public void createUsuarioTest() throws BusinessLogicException{
         UsuarioEntity usuario = factory.manufacturePojo(UsuarioEntity.class);
         UsuarioEntity result = usuarioLogic.createUsuario(usuario);
