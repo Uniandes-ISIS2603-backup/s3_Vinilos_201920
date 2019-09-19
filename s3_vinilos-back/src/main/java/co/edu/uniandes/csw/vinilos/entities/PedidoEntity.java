@@ -40,13 +40,14 @@ public enum TipoPedido
     @ManyToOne
     private UsuarioEntity usuario;
 
-     /*@PodamExclude
-    @OneToOne(mappedBy = "vinilosCompra", fetch=FetchType.LAZY)
-    private ViniloEntity vinilosCompra;
-    
+       
     @PodamExclude
-    @OneToOne(mappedBy = "vinilosIntercambio", fetch=FetchType.LAZY)
-    private ViniloEntity vinilosIntercambio;*/
+    @OneToOne(mappedBy = "pedidoCompra", fetch=FetchType.LAZY)
+    private ViniloEntity viniloCompra;
+
+    @PodamExclude
+    @OneToOne(mappedBy = "pedidoIntercambio", fetch=FetchType.LAZY)
+    private ViniloEntity vinilosIntercambio;
     
     @PodamExclude
     @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY)
@@ -59,22 +60,6 @@ public enum TipoPedido
     public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
     }
-
-    /*public ViniloEntity getVinilosCompra() {
-        return vinilosCompra;
-    }
-
-    public void setVinilosCompra(ViniloEntity vinilosCompra) {
-        this.vinilosCompra = vinilosCompra;
-    }
-
-    public ViniloEntity getVinilosIntercambio() {
-        return vinilosIntercambio;
-    }
-
-    public void setVinilosIntercambio(ViniloEntity vinilosIntercambio) {
-        this.vinilosIntercambio = vinilosIntercambio;
-    }*/
 
     public EnvioEntity getEnvio() {
         return envio;
@@ -123,5 +108,22 @@ public enum TipoPedido
     {
         tipo = pTipo;
     }
+
+    public ViniloEntity getViniloCompra() {
+        return viniloCompra;
+    }
+
+    public void setViniloCompra(ViniloEntity viniloCompra) {
+        this.viniloCompra = viniloCompra;
+    }
+
+    public ViniloEntity getVinilosIntercambio() {
+        return vinilosIntercambio;
+    }
+
+    public void setVinilosIntercambio(ViniloEntity vinilosIntercambio) {
+        this.vinilosIntercambio = vinilosIntercambio;
+    }
+    
     
 }

@@ -22,13 +22,13 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private String estado;
     private boolean disponible;
 
-    /*@PodamExclude
+    @PodamExclude
     @OneToOne
     private PedidoEntity pedidoCompra;
     
     @PodamExclude
     @OneToOne
-    private PedidoEntity pedidoIntercambio ;*/
+    private PedidoEntity pedidoIntercambio;
     
     /**
      * @return the nombre
@@ -128,7 +128,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
         this.disponible = disponible;
     }
 
-    /*public PedidoEntity getPedidoCompra() {
+    public PedidoEntity getPedidoCompra() {
         return pedidoCompra;
     }
 
@@ -142,8 +142,6 @@ public class ViniloEntity extends BaseEntity implements Serializable{
 
     public void setPedidoIntercambio(PedidoEntity pedidoIntercambio) {
         this.pedidoIntercambio = pedidoIntercambio;
-    }*/
-
-    
+    }    
    
 }
