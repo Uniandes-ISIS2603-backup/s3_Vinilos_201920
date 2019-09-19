@@ -9,9 +9,7 @@ import co.edu.uniandes.csw.vinilos.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -24,7 +22,8 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class PedidoEntity extends BaseEntity implements Serializable{
     
-    public enum TipoPedido
+    
+public enum TipoPedido
     {
         INTERCAMBIO, COMPRA
     }
@@ -34,12 +33,12 @@ public class PedidoEntity extends BaseEntity implements Serializable{
     private boolean aceptado;
     private String observacion;
     private TipoPedido tipo;
-   
-    /*@PodamExclude
-    @ManyToOne
-    private UsuarioEntity usuario;
     
     @PodamExclude
+    @ManyToOne
+    private UsuarioEntity usuario;
+
+     /*@PodamExclude
     @OneToOne(mappedBy = "vinilosCompra", fetch=FetchType.LAZY)
     private ViniloEntity vinilosCompra;
     
@@ -49,7 +48,7 @@ public class PedidoEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @OneToOne(mappedBy = "envio", fetch=FetchType.LAZY)
-    private EnvioEntity envio;
+    private EnvioEntity envio;*/
 
     public UsuarioEntity getUsuario() {
         return usuario;
@@ -59,7 +58,7 @@ public class PedidoEntity extends BaseEntity implements Serializable{
         this.usuario = usuario;
     }
 
-    public ViniloEntity getVinilosCompra() {
+    /*public ViniloEntity getVinilosCompra() {
         return vinilosCompra;
     }
 

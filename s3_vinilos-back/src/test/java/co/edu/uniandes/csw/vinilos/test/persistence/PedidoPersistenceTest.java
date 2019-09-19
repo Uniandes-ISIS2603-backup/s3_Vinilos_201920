@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vinilos.test.persistence;
 
 import co.edu.uniandes.csw.vinilos.entities.PedidoEntity;
+import co.edu.uniandes.csw.vinilos.entities.UsuarioEntity;
 import co.edu.uniandes.csw.vinilos.persistence.PedidoPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,7 @@ public class PedidoPersistenceTest {
      */
     private void clearData() {
         em.createQuery("delete from PedidoEntity").executeUpdate();
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
 
     /**
@@ -82,7 +84,10 @@ public class PedidoPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             PedidoEntity entity = factory.manufacturePojo(PedidoEntity.class);
+            /*UsuarioEntity usuEntity = factory.manufacturePojo(UsuarioEntity.class);
 
+            /*entity.setUsuario(usuEntity);
+            usuEntity.addPedido(entity)*/
             em.persist(entity);
             data.add(entity);
         }

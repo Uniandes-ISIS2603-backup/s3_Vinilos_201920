@@ -22,6 +22,7 @@ public class PedidoPersistence {
     @PersistenceContext(unitName = "vinilosPU")
     protected EntityManager em;
     
+    
     public PedidoEntity create (PedidoEntity pPedido)
     {
         em.persist(pPedido);

@@ -58,9 +58,9 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String direccion;
     
     
-    /*@PodamExclude
-    @OneToMany(mappedBy = "pedidos")
-    private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();*/
+    @PodamExclude
+    @OneToMany(mappedBy = "usuario")
+    private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
     
     /////// Gets
     /*
@@ -161,13 +161,18 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
         this.nombre = nombre;
     }
 
-    /*public List<PedidoEntity> getPedidos() {
+    public List<PedidoEntity> getPedidos() {
         return pedidos;
     }
 
     public void setPedidos(List<PedidoEntity> pedidos) {
         this.pedidos = pedidos;
-    }*/
+    }
+    
+    public void addPedido(PedidoEntity pedido)
+    {
+        pedidos.add(pedido);
+    }
     
     
 }
