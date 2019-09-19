@@ -48,8 +48,8 @@ public enum TipoPedido
     @OneToOne(mappedBy = "vinilosIntercambio", fetch=FetchType.LAZY)
     private ViniloEntity vinilosIntercambio;*/
     
-    /*@PodamExclude
-    @OneToOne(mappedBy = "envio", fetch=FetchType.LAZY)
+    @PodamExclude
+    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY)
     private EnvioEntity envio;
 
     public UsuarioEntity getUsuario() {
@@ -74,7 +74,7 @@ public enum TipoPedido
 
     public void setVinilosIntercambio(ViniloEntity vinilosIntercambio) {
         this.vinilosIntercambio = vinilosIntercambio;
-    }
+    }*/
 
     public EnvioEntity getEnvio() {
         return envio;
@@ -82,7 +82,7 @@ public enum TipoPedido
 
     public void setEnvio(EnvioEntity envio) {
         this.envio = envio;
-    }*/
+    }
     
     public Date getFechaGeneracion()
     {

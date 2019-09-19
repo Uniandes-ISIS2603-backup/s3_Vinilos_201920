@@ -27,9 +27,9 @@ public class EnvioEntity extends BaseEntity implements Serializable
        
     private boolean enviado;
     
-  /*  @PodamExclude
+    @PodamExclude
     @OneToOne
-    private PedidoEntity pedido;*/
+    private PedidoEntity pedido;
     
     public Date getFecha() {
         return fecha;
