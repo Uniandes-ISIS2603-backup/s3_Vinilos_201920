@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vinilos.test.logic;
 
 import co.edu.uniandes.csw.vinilos.ejb.UsuarioLogic;
+import co.edu.uniandes.csw.vinilos.entities.PedidoEntity;
 import co.edu.uniandes.csw.vinilos.entities.UsuarioEntity;
 import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
 import co.edu.uniandes.csw.vinilos.exceptions.BusinessLogicException;
@@ -47,6 +48,7 @@ public class UsuarioLogicTest {
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(PedidoEntity.class.getPackage())
                 .addPackage(UsuarioLogic.class.getPackage())
                 .addPackage(UsuarioPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")

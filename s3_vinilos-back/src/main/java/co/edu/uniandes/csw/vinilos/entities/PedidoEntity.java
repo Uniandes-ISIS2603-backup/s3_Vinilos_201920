@@ -7,10 +7,13 @@ package co.edu.uniandes.csw.vinilos.entities;
 
 import co.edu.uniandes.csw.vinilos.podam.DateStrategy;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -45,9 +48,9 @@ public enum TipoPedido
     @OneToOne(mappedBy = "pedidoCompra", fetch=FetchType.LAZY)
     private ViniloEntity viniloCompra;
 
-    @PodamExclude
-    @OneToOne(mappedBy = "pedidoIntercambio", fetch=FetchType.LAZY)
-    private ViniloEntity vinilosIntercambio;
+   @PodamExclude
+    @OneToMany(mappedBy = "pedidoIntercambio")
+    private List<ViniloEntity> vinilosIntercambio = new ArrayList<ViniloEntity>();
     
     @PodamExclude
     @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY)
@@ -117,13 +120,18 @@ public enum TipoPedido
         this.viniloCompra = viniloCompra;
     }
 
-    public ViniloEntity getVinilosIntercambio() {
+    public List<ViniloEntity> getVinilosIntercambio() {
         return vinilosIntercambio;
     }
 
-    public void setVinilosIntercambio(ViniloEntity vinilosIntercambio) {
+    public void setVinilosIntercambio(List<ViniloEntity> vinilosIntercambio) {
         this.vinilosIntercambio = vinilosIntercambio;
     }
     
+        
+    public void addViniloIntercambio(ViniloEntity pedido)
+    {
+        vinilosIntercambio.add(pedido);
+    }
     
 }

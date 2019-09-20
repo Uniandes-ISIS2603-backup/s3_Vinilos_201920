@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vinilos.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -27,7 +28,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private PedidoEntity pedidoCompra;
     
     @PodamExclude
-    @OneToOne
+    @ManyToOne
     private PedidoEntity pedidoIntercambio;
     
     /**
