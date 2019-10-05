@@ -63,7 +63,7 @@ public class ArtistaDetailDTO extends ArtistaDTO {
             for (ViniloDTO dtoVinilo : vinilos) {
                 //vinilosEntity.add(dtoVinilo.toEntity());
             }
-           // artistaEntity.setVinilos(vinilosEntity);
+           artistaEntity.setVinilos((ArrayList<ViniloEntity>) vinilosEntity);
         }
         return artistaEntity;
     }

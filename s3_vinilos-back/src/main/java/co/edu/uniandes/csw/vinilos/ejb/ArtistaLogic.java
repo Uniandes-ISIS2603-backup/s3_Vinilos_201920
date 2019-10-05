@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.vinilos.ejb;
 import co.edu.uniandes.csw.vinilos.entities.ArtistaEntity;
 import co.edu.uniandes.csw.vinilos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vinilos.persistence.ArtistaPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -29,4 +30,31 @@ public class ArtistaLogic {
        artista = persistence.create(artista);
        return artista;  
     }
+    
+      public List<ArtistaEntity> getArtistas() 
+   {       
+       List<ArtistaEntity> artistas = persistence.findAll();
+       return artistas;
+   }
+   
+   public ArtistaEntity getArtista(Long artistaId) 
+   {
+       ArtistaEntity artista = persistence.find(artistaId);
+       return artista;
+   }
+
+    
+   public ArtistaEntity updateArtista(Long artistaId, ArtistaEntity artistaEntity) throws BusinessLogicException 
+   {
+       if(artistaEntity.getName()==null){
+            throw new BusinessLogicException("El nombre del artista está vacío");
+        }
+       ArtistaEntity newEntity = persistence.update(artistaEntity);
+       return newEntity;
+   }
+   
+    public void deleteArtista(Long artistaId) throws BusinessLogicException {
+       
+       persistence.delete(artistaId);
+    } 
 }

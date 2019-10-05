@@ -36,6 +36,7 @@ public class ArtistaDTO implements Serializable {
         if (artistaEntity != null) {
             this.id = artistaEntity.getId();
             this.name = artistaEntity.getName();
+            this.rutaFoto = artistaEntity.getRutaFoto();
         }
     }
     
@@ -43,6 +44,7 @@ public class ArtistaDTO implements Serializable {
         ArtistaEntity artistaEntity = new ArtistaEntity();
         artistaEntity.setId(this.id);
         artistaEntity.setName(this.name);
+        artistaEntity.setRutaFoto(this.rutaFoto);
         return artistaEntity;
     }
 

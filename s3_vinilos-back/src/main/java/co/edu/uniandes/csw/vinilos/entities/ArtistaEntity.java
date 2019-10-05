@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vinilos.entities;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 /**
  *
@@ -17,7 +18,15 @@ public class ArtistaEntity extends BaseEntity implements Serializable{
     
     private GeneroEntity[] generos;
     
-    private ViniloEntity[] vinilos;
+    private ArrayList<ViniloEntity> vinilos;
+
+    public ArrayList<ViniloEntity> getVinilos() {
+        return vinilos;
+    }
+
+    public void setVinilos(ArrayList<ViniloEntity> vinilos) {
+        this.vinilos = vinilos;
+    }
 
     private String rutaFoto;
 
@@ -28,14 +37,7 @@ public class ArtistaEntity extends BaseEntity implements Serializable{
     public void setRutaFoto(String rutaFoto) {
         this.rutaFoto = rutaFoto;
     }
-    
-    public ViniloEntity[] getVinilos() {
-        return vinilos;
-    }
-
-    public void setVinilos(ViniloEntity[] vinilos) {
-        this.vinilos = vinilos;
-    }
+   
   
     public String getName() {
         return name;
