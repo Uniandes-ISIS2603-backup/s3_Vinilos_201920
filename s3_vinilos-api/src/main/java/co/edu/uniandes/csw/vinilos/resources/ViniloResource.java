@@ -5,30 +5,31 @@
  */
 package co.edu.uniandes.csw.vinilos.resources;
 
-import co.edu.uniandes.csw.vinilos.dtos.ArtistaDTO;
+import co.edu.uniandes.csw.vinilos.dtos.ViniloDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 /**
  *
- * @author Juan Diego Bogotá
+ * @author Estudiante
  */
-@Path("artistas")
+@Path("vinilos")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class ArtistaResource {
-   
-    private static final Logger LOGGER = Logger.getLogger(ArtistaResource.class.getName());
+public class ViniloResource {
     
-    @POST
-    public ArtistaDTO createArtista(ArtistaDTO artista){
-       return artista; 
-    }
+   private static final Logger LOGGER = Logger.getLogger(ViniloResource.class.getName());
+   
+   @POST
+   public ViniloDTO crearVinilo(ViniloDTO vinilo) {
+       return vinilo;
+   }
+   
+   
+    
 }
-

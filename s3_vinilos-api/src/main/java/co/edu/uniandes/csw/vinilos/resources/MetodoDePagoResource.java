@@ -19,7 +19,7 @@ import javax.ws.rs.Produces;
  *
  * @author Juan Diego Bogotá
  */
-@Path("usuarios")
+@Path("metodosDePago")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
