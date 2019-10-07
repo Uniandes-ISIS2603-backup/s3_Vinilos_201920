@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.vinilos.entities;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -16,12 +19,20 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ViniloEntity extends BaseEntity implements Serializable{
     private String nombre;
-    private String anio;
+    private Integer anio;
     private String coleccion;
-    private double precio;
+    private Double precio;
     private String informacion;
     private String estado;
-    private boolean disponible;
+    private Boolean disponible;
+    
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity duenio;
+    
+    @PodamExclude
+    @OneToMany
+    private List<ViniloEntity> vinilosIntercambio = new ArrayList<ViniloEntity>();;
 
     @PodamExclude
     @OneToOne
@@ -48,15 +59,15 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     /**
      * @return the anio
      */
-    public String getAnio() {
+    public Integer getAnio() {
         return anio;
     }
 
     /**
      * @param anio the anio to set
      */
-    public void setAnio(String anio) {
-        this.anio = anio;
+    public void setAnio(int anio) {
+        this.setAnio((Integer) anio);
     }
 
     /**
@@ -76,7 +87,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     /**
      * @return the precio
      */
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
@@ -84,7 +95,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
      * @param precio the precio to set
      */
     public void setPrecio(double precio) {
-        this.precio = precio;
+        this.setPrecio((Double) precio);
     }
 
     /**
@@ -119,14 +130,14 @@ public class ViniloEntity extends BaseEntity implements Serializable{
      * @return the disponible
      */
     public boolean isDisponible() {
-        return disponible;
+        return getDisponible();
     }
 
     /**
      * @param disponible the disponible to set
      */
     public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+        this.setDisponible((Boolean) disponible);
     }
 
     public PedidoEntity getPedidoCompra() {
@@ -144,5 +155,61 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     public void setPedidoIntercambio(PedidoEntity pedidoIntercambio) {
         this.pedidoIntercambio = pedidoIntercambio;
     }    
+
+    /**
+     * @param anio the anio to set
+     */
+    public void setAnio(Integer anio) {
+        this.anio = anio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the disponible
+     */
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    /**
+     * @param disponible the disponible to set
+     */
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    /**
+     * @return the duenio
+     */
+    public UsuarioEntity getDuenio() {
+        return duenio;
+    }
+
+    /**
+     * @param duenio the duenio to set
+     */
+    public void setDuenio(UsuarioEntity duenio) {
+        this.duenio = duenio;
+    }
+
+    /**
+     * @return the vinilosIntercambio
+     */
+    public List<ViniloEntity> getVinilosIntercambio() {
+        return vinilosIntercambio;
+    }
+
+    /**
+     * @param vinilosIntercambio the vinilosIntercambio to set
+     */
+    public void setVinilosIntercambio(List<ViniloEntity> vinilosIntercambio) {
+        this.vinilosIntercambio = vinilosIntercambio;
+    }
    
 }

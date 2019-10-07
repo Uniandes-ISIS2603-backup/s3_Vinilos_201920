@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.vinilos.dtos;
 
+import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
 import java.io.Serializable;
 
 /**
@@ -15,16 +16,40 @@ public class ViniloDTO implements Serializable{
     
     private Long id;
     private String nombre;
-    private int anio;
+    private Integer anio;
     private String coleccion;
-    private double precio;
+    private Double precio;
     private String informacion;
     private String estado;
-    private boolean disponible;
+    private Boolean disponible;
     private UsuarioDTO duenio;
     
     public ViniloDTO(){
         
+    }
+    
+    public ViniloDTO(ViniloEntity entidad){
+        setId(entidad.getId());
+        setNombre(entidad.getNombre());
+        setAnio(entidad.getAnio());
+        setColeccion(entidad.getColeccion());
+        setPrecio(entidad.getPrecio());
+        setInformacion(entidad.getInformacion());
+        setEstado(entidad.getEstado());
+        setDisponible(entidad.isDisponible());
+    }
+    
+    public ViniloEntity toEntity() {
+        ViniloEntity entidad = new ViniloEntity();
+        entidad.setId(this.getId());
+        entidad.setNombre(this.getNombre());
+        entidad.setAnio(this.getAnio());
+        entidad.setColeccion(this.getColeccion());
+        entidad.setPrecio(this.getPrecio());
+        entidad.setInformacion(this.getInformacion());
+        entidad.setEstado(this.getEstado());
+        entidad.setDisponible(this.isDisponible());
+        return entidad;
     }
 
     /**
@@ -58,7 +83,7 @@ public class ViniloDTO implements Serializable{
     /**
      * @return the anio
      */
-    public int getAnio() {
+    public Integer getAnio() {
         return anio;
     }
 
@@ -86,7 +111,7 @@ public class ViniloDTO implements Serializable{
     /**
      * @return the precio
      */
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
@@ -128,7 +153,7 @@ public class ViniloDTO implements Serializable{
     /**
      * @return the disponible
      */
-    public boolean isDisponible() {
+    public Boolean isDisponible() {
         return disponible;
     }
 
@@ -137,6 +162,20 @@ public class ViniloDTO implements Serializable{
      */
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+
+    /**
+     * @return the duenio
+     */
+    public UsuarioDTO getDuenio() {
+        return duenio;
+    }
+
+    /**
+     * @param duenio the duenio to set
+     */
+    public void setDuenio(UsuarioDTO duenio) {
+        this.duenio = duenio;
     }
     
 }

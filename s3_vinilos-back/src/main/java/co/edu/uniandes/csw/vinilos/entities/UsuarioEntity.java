@@ -62,6 +62,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<PedidoEntity> pedidos = new ArrayList<PedidoEntity>();
     
+    @PodamExclude
+    @OneToMany(mappedBy = "duenio")
+    private List<ViniloEntity> vinilos = new ArrayList<ViniloEntity>();
+    
     /////// Gets
     /*
     Da el nombre
