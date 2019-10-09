@@ -112,13 +112,15 @@ public class UsuarioDTO implements Serializable {
     }
     
     public UsuarioDTO(UsuarioEntity personaje) {
-        this.nombre = personaje.getName();
-        this.celular = personaje.getCelular();
-        this.correo = personaje.getCorreo();
-        this.direccion = personaje.getDireccion();
-        this.fechaNacim = personaje.getfechaNacim();
-        this.pais = personaje.getPais();
-        this.id = personaje.getId();
+        if(personaje != null) {
+            this.nombre = personaje.getName();
+            this.celular = personaje.getCelular();
+            this.correo = personaje.getCorreo();
+            this.direccion = personaje.getDireccion();
+            this.fechaNacim = personaje.getfechaNacim();
+            this.pais = personaje.getPais();
+            this.id = personaje.getId();
+        }
     }
     
     public UsuarioEntity toEntity() {
