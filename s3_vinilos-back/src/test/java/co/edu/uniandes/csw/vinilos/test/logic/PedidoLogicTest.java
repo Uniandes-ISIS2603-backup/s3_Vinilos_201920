@@ -119,6 +119,7 @@ public class PedidoLogicTest {
         PedidoEntity newEntity = factory.manufacturePojo(PedidoEntity.class);
         newEntity.setTipo(PedidoEntity.TipoPedido.COMPRA);
         ViniloEntity newVinEntity = factory.manufacturePojo(ViniloEntity.class);
+        newVinEntity.setAnio(1900);
         newVinEntity = vinLogic.crearVinilo(newVinEntity);
         newEntity.setViniloCompra(newVinEntity);
         newEntity.setVinilosIntercambio(null);
@@ -136,6 +137,7 @@ public class PedidoLogicTest {
         PedidoEntity newEntity = factory.manufacturePojo(PedidoEntity.class);
         newEntity.setTipo(PedidoEntity.TipoPedido.INTERCAMBIO);
         ViniloEntity newVinEntity = factory.manufacturePojo(ViniloEntity.class);
+        newVinEntity.setAnio(1950);
         newVinEntity = vinLogic.crearVinilo(newVinEntity);
         newEntity.setViniloCompra(null);
         newEntity.addViniloIntercambio(newVinEntity);
