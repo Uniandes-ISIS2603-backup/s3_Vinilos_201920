@@ -25,7 +25,7 @@ public class ArtistaDetailDTO extends ArtistaDTO {
       /*
     * Esta lista de tipo ViniloDTO contiene los vinilos que estan asociados a una artista
      */
-    private List<ViniloDTO> vinilos;
+    private ViniloDTO[] vinilos;
 
     /**
      * Constructor por defecto
@@ -42,7 +42,7 @@ public class ArtistaDetailDTO extends ArtistaDTO {
         super(artistaEntity);
         if (artistaEntity != null) {
             if (artistaEntity.getVinilos() != null) {
-                vinilos = new ArrayList<>();
+                vinilos = new ViniloDTO[artistaEntity.getVinilos().length];
                 for (ViniloEntity entityVinilo : artistaEntity.getVinilos()) {
                     //vinilos.add(new ViniloDTO(entityVinilo));
                 }
@@ -59,11 +59,11 @@ public class ArtistaDetailDTO extends ArtistaDTO {
     public ArtistaEntity toEntity() {
         ArtistaEntity artistaEntity = super.toEntity();
         if (vinilos != null) {
-            List<ViniloEntity> vinilosEntity = new ArrayList<>();
+            ViniloEntity[] vinilosEntity = new ViniloEntity[vinilos.length];
             for (ViniloDTO dtoVinilo : vinilos) {
                 //vinilosEntity.add(dtoVinilo.toEntity());
             }
-           artistaEntity.setVinilos((ArrayList<ViniloEntity>) vinilosEntity);
+           artistaEntity.setVinilos(vinilosEntity);
         }
         return artistaEntity;
     }
@@ -73,7 +73,7 @@ public class ArtistaDetailDTO extends ArtistaDTO {
      *
      * @return the vinilos
      */
-    public List<ViniloDTO> getVinilos() {
+        public ViniloDTO[] getVinilos() {
         return vinilos;
     }
 
@@ -82,7 +82,7 @@ public class ArtistaDetailDTO extends ArtistaDTO {
      *
      * @param vinilos the vinilos to set
      */
-    public void setVinilos(List<ViniloDTO> vinilos) {
+    public void setVinilos(ViniloDTO[] vinilos) {
         this.vinilos = vinilos;
     }
 
