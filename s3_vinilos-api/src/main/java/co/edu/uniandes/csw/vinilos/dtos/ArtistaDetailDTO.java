@@ -43,8 +43,10 @@ public class ArtistaDetailDTO extends ArtistaDTO {
         if (artistaEntity != null) {
             if (artistaEntity.getVinilos() != null) {
                 vinilos = new ViniloDTO[artistaEntity.getVinilos().length];
+                int i = 0;
                 for (ViniloEntity entityVinilo : artistaEntity.getVinilos()) {
-                    //vinilos.add(new ViniloDTO(entityVinilo));
+                    vinilos[i] = (new ViniloDTO(entityVinilo));
+                    i++;
                 }
             }
         }
@@ -60,10 +62,12 @@ public class ArtistaDetailDTO extends ArtistaDTO {
         ArtistaEntity artistaEntity = super.toEntity();
         if (vinilos != null) {
             ViniloEntity[] vinilosEntity = new ViniloEntity[vinilos.length];
+            int i = 0;
             for (ViniloDTO dtoVinilo : vinilos) {
-                //vinilosEntity.add(dtoVinilo.toEntity());
+                vinilosEntity[i] = (dtoVinilo.toEntity());
+                i++;
             }
-           artistaEntity.setVinilos(vinilosEntity);
+           //artistaEntity.setVinilos(vinilosEntity);
         }
         return artistaEntity;
     }
