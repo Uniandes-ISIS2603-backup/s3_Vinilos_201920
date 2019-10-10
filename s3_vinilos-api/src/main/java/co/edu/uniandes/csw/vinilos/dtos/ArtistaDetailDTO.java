@@ -25,7 +25,15 @@ public class ArtistaDetailDTO extends ArtistaDTO {
       /*
     * Esta lista de tipo ViniloDTO contiene los vinilos que estan asociados a una artista
      */
-    private ViniloDTO[] vinilos;
+   private List<ViniloDTO> vinilos;
+
+    public List<ViniloDTO> getVinilos() {
+        return vinilos;
+    }
+
+    public void setVinilos(List<ViniloDTO> vinilos) {
+        this.vinilos = vinilos;
+    }
 
     /**
      * Constructor por defecto
@@ -42,11 +50,9 @@ public class ArtistaDetailDTO extends ArtistaDTO {
         super(artistaEntity);
         if (artistaEntity != null) {
             if (artistaEntity.getVinilos() != null) {
-                vinilos = new ViniloDTO[artistaEntity.getVinilos().length];
-                int i = 0;
-                for (ViniloEntity entityVinilo : artistaEntity.getVinilos()) {
-                    vinilos[i] = (new ViniloDTO(entityVinilo));
-                    i++;
+               vinilos = new ArrayList<>();
+                for(ViniloEntity entityVinilo: artistaEntity.getVinilos()){
+                    vinilos.add(new ViniloDTO(entityVinilo));
                 }
             }
         }
@@ -60,35 +66,17 @@ public class ArtistaDetailDTO extends ArtistaDTO {
     @Override
     public ArtistaEntity toEntity() {
         ArtistaEntity artistaEntity = super.toEntity();
-        if (vinilos != null) {
-            ViniloEntity[] vinilosEntity = new ViniloEntity[vinilos.length];
-            int i = 0;
-            for (ViniloDTO dtoVinilo : vinilos) {
-                vinilosEntity[i] = (dtoVinilo.toEntity());
-                i++;
+        if(vinilos != null){
+            List<ViniloEntity> viniloEntity = new ArrayList<ViniloEntity>();
+            for(ViniloDTO dtoVinilo: vinilos){
+                viniloEntity.add(dtoVinilo.toEntity());
             }
-           //artistaEntity.setVinilos(vinilosEntity);
+            artistaEntity.setVinilos(viniloEntity);
         }
         return artistaEntity;
     }
 
-    /**
-     * Devuelve la lista de libros de la artista.
-     *
-     * @return the vinilos
-     */
-        public ViniloDTO[] getVinilos() {
-        return vinilos;
-    }
-
-    /**
-     * Modifica la lista de libros de la artista.
-     *
-     * @param vinilos the vinilos to set
-     */
-    public void setVinilos(ViniloDTO[] vinilos) {
-        this.vinilos = vinilos;
-    }
+   
 
     @Override
     public String toString() {
