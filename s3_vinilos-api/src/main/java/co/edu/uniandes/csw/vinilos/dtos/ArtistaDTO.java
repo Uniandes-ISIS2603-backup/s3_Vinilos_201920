@@ -69,4 +69,6 @@ public class ArtistaDTO implements Serializable {
         this.name = name;
     }
     
+    //Arreglobase de datos
+    
 }
