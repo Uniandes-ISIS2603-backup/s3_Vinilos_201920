@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.vinilos.resources;
 
-import co.edu.uniandes.csw.vinilos.dtos.EnvioDto;
+import co.edu.uniandes.csw.vinilos.dtos.EnvioDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -17,14 +17,14 @@ import javax.ws.rs.Produces;
  *
  * @author Estudiante
  */
-@Path("genero")
+@Path("envio")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class EnvioResource {
-    private static final Logger LOGGER = Logger.getLogger(MetodoDePagoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EnvioResource.class.getName());
       @POST
-      public EnvioDto createGeneroDTO(EnvioDto envio)
+      public EnvioDTO createEnviooDTO(EnvioDTO envio)
       {
           return envio;
       }

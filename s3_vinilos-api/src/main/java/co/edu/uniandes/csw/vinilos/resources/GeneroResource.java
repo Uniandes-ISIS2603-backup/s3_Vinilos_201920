@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.vinilos.resources;
 
-import co.edu.uniandes.csw.vinilos.dtos.GeneroDto;
+import co.edu.uniandes.csw.vinilos.dtos.GeneroDTO;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -23,9 +23,9 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class GeneroResource {
     
-      private static final Logger LOGGER = Logger.getLogger(MetodoDePagoResource.class.getName());
+      private static final Logger LOGGER = Logger.getLogger(GeneroResource.class.getName());
       @POST
-      public GeneroDto createGeneroDTO(GeneroDto generos)
+      public GeneroDTO createGeneroDTO(GeneroDTO generos)
       {
           return generos;
       }
