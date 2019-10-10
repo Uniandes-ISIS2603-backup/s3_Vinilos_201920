@@ -7,9 +7,7 @@ package co.edu.uniandes.csw.vinilos.test.persistence;
 
 
 import co.edu.uniandes.csw.vinilos.entities.EnvioEntity;
-import co.edu.uniandes.csw.vinilos.entities.GeneroEntity;
 import co.edu.uniandes.csw.vinilos.persistence.EnvioPersistence;
-import co.edu.uniandes.csw.vinilos.persistence.GeneroPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,6 +29,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author juan gonzalez
  */
+
 @RunWith(Arquillian.class)
 public class EnvioPersistenceTest {
 
