@@ -90,9 +90,9 @@ public class ArtistaPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
 
               
-        .addClass(ArtistaEntity.class)
+        .addPackage(ArtistaEntity.class.getPackage())
 
-        .addClass(ArtistaPersistence.class)
+        .addPackage(ArtistaPersistence.class.getPackage())
 
         .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
 
