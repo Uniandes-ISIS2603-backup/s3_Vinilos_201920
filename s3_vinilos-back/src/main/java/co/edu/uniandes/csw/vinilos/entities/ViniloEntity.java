@@ -41,7 +41,18 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @ManyToOne
     private PedidoEntity pedidoIntercambio;
+
+    public ArtistaEntity getVinilosArtista() {
+        return vinilosArtista;
+    }
+
+    public void setVinilosArtista(ArtistaEntity vinilosArtista) {
+        this.vinilosArtista = vinilosArtista;
+    }
     
+    @PodamExclude
+    @ManyToOne
+    private ArtistaEntity vinilosArtista;
     /**
      * @return the nombre
      */
