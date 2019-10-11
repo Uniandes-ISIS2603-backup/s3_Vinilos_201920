@@ -75,4 +75,6 @@ public class MetodoDePagoLogicTest {
         MetodoDePagoEntity result = metodoDePagoLogic.createMetodoDePago(newEntity);
         
     }
+    
+    //g
 }
