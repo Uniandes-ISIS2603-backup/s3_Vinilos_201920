@@ -28,7 +28,7 @@ public class PedidoDTO implements Serializable
     private String observacion;
     private TipoPedido tipo;
     private ViniloDTO viniloCompra;
-    private EnvioDTO envio;
+    private EnvioDto envio;
     private Long id;
     
     
@@ -75,11 +75,11 @@ public class PedidoDTO implements Serializable
         this.viniloCompra = viniloCompra;
     }
 
-    public EnvioDTO getEnvio() {
+    public EnvioDto getEnvio() {
         return envio;
     }
 
-    public void setEnvio(EnvioDTO envio) {
+    public void setEnvio(EnvioDto envio) {
         this.envio = envio;
     }
 
@@ -108,7 +108,7 @@ public class PedidoDTO implements Serializable
                 this.viniloCompra = null;
             }
             if (pedidoEntity.getEnvio()!= null) {
-                this.envio = new EnvioDTO(pedidoEntity.getEnvio());
+                this.envio = new EnvioDto(pedidoEntity.getEnvio());
             } else {
                 this.envio = null;
             }

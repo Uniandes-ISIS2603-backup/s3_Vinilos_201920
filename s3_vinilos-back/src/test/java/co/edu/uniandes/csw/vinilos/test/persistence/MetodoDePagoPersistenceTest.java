@@ -90,9 +90,9 @@ public class MetodoDePagoPersistenceTest {
         return ShrinkWrap.create(JavaArchive.class)
 
               
-        .addClass(MetodoDePagoEntity.class)
+        .addPackage(MetodoDePagoEntity.class.getPackage())
 
-        .addClass(MetodoDePagoPersistence.class)
+        .addPackage(MetodoDePagoPersistence.class.getPackage())
 
         .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
 
