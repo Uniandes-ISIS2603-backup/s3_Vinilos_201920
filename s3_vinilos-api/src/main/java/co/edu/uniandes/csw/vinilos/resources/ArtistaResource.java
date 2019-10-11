@@ -42,6 +42,7 @@ public class ArtistaResource {
     
     private static final Logger LOGGER = Logger.getLogger(ArtistaResource.class.getName());
     
+    /*Crea al artista*/
     @POST
     public ArtistaDTO crearVinilo(ArtistaDTO artista) throws BusinessLogicException{
     ArtistaEntity artistaEntity = artista.toEntity();
@@ -49,7 +50,7 @@ public class ArtistaResource {
     return new ArtistaDTO(artistaEntity);
    }
     
-    
+    /*Retorna al artista*/
    @GET
    @Path("(artistasId: \\d+)")
    public ArtistaDetailDTO getArtista(@PathParam("artistasId") Long artistasId){
@@ -62,11 +63,13 @@ public class ArtistaResource {
        return new ArtistaDetailDTO(entidad);
     }
    
+   /*Retorna a los artistas*/
    @GET
 public List<ArtistaDetailDTO> getArtistas(){
      return artistaListEntity2DTO(logica.getArtistas());
  }
 
+/*Actualiza al artista*/
 @PUT
 @Path("{artistasId: \\d+}")
 public ArtistaDetailDTO updateArtistas(@PathParam("artistasId") Long artistasId, ArtistaDetailDTO artista) throws WebApplicationException, BusinessLogicException {
@@ -77,7 +80,7 @@ public ArtistaDetailDTO updateArtistas(@PathParam("artistasId") Long artistasId,
     ArtistaDetailDTO detailDTO = new ArtistaDetailDTO(logica.updateArtista(artistasId, artista.toEntity()));
     return detailDTO;
 }
-
+/*Elimina al artista*/
 @DELETE
 @Path("{artistasId: \\d+}")
 public void deleteArtista(@PathParam("artistasId") Long artistasId) throws BusinessLogicException {

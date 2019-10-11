@@ -34,8 +34,9 @@ public class MetodoDePagoResource {
      
     private static final Logger LOGGER = Logger.getLogger(MetodoDePagoResource.class.getName());
     
+    /*Crea el metodo de pago*/
     @POST
-     public MetodoDePagoDTO crearVinilo(MetodoDePagoDTO metodoDePago) throws BusinessLogicException{
+     public MetodoDePagoDTO crearMetodoDePago(MetodoDePagoDTO metodoDePago) throws BusinessLogicException{
     MetodoDePagoEntity metodoDePagoEntity = metodoDePago.toEntity();
     metodoDePagoEntity = logica.createMetodoDePago(metodoDePagoEntity);
     return new MetodoDePagoDTO(metodoDePagoEntity);

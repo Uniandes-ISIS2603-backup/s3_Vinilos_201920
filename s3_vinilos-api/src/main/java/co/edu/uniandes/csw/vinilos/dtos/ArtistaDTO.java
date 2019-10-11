@@ -16,14 +16,19 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 public class ArtistaDTO implements Serializable {
     
+    /*Id del artista */
     private long id;
+    /*Nombre del artista */
     private String name;
+    /*Ruta de la foto del artista */
     private String rutaFoto;
 
+    /*Retorna la ruta de la foto del artista */
     public String getRutaFoto() {
         return rutaFoto;
     }
 
+    /*Cambia la ruta de la foto del artista */
     public void setRutaFoto(String rutaFoto) {
         this.rutaFoto = rutaFoto;
     }
@@ -32,6 +37,7 @@ public class ArtistaDTO implements Serializable {
         
     }
     
+    /*Metodo constructor de la clase */
      public ArtistaDTO(ArtistaEntity artistaEntity) {
         if (artistaEntity != null) {
             this.id = artistaEntity.getId();
@@ -40,6 +46,9 @@ public class ArtistaDTO implements Serializable {
         }
     }
     
+    /*
+     Crea un artistaEntiry
+     */
     public ArtistaEntity toEntity() {
         ArtistaEntity artistaEntity = new ArtistaEntity();
         artistaEntity.setId(this.id);
@@ -53,18 +62,20 @@ public class ArtistaDTO implements Serializable {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
+      /*Retorna el id del artista */
     public long getId() {
         return id;
     }
 
+      /*Cambia el id del artista */
     public void setId(long id) {
         this.id = id;
     }
-
+  /*Retorna el nombre del artista */
     public String getName() {
         return name;
     }
-
+  /*Cambia el nombre del artista */
     public void setName(String name) {
         this.name = name;
     }
