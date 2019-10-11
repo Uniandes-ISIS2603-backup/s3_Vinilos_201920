@@ -15,8 +15,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @author Juan Diego Bogotá
  */
 public class MetodoDePagoDTO implements Serializable{
-
-    private long idPago;
     
     private long numeroTarjeta;
     
@@ -27,14 +25,7 @@ public class MetodoDePagoDTO implements Serializable{
     public MetodoDePagoDTO(){
         
     }
-    public long getIdPago() {
-        return idPago;
-    }
-
-    public void setIdPago(long idPago) {
-        this.idPago = idPago;
-    }
-
+   
     public long getNumeroTarjeta() {
         return numeroTarjeta;
     }
@@ -63,7 +54,6 @@ public class MetodoDePagoDTO implements Serializable{
 
  public MetodoDePagoDTO(MetodoDePagoEntity metodoDePagoEntity) {
     if (metodoDePagoEntity != null) {
-        this.idPago = metodoDePagoEntity.getIdPago();
         this.numeroTarjeta = metodoDePagoEntity.getNumeroTarjeta();
         this.cuentaPSE = metodoDePagoEntity.getCuentaPSE();
         this.montoPagado = metodoDePagoEntity.getMontoPagado();
@@ -72,7 +62,6 @@ public class MetodoDePagoDTO implements Serializable{
 
 public MetodoDePagoEntity toEntity() {
     MetodoDePagoEntity metodoDePagoEntity = new MetodoDePagoEntity();
-    metodoDePagoEntity.setIdPago(this.idPago);
     metodoDePagoEntity.setNumeroTarjeta(this.numeroTarjeta);
     metodoDePagoEntity.setCuentaPSE(this.cuentaPSE);
     metodoDePagoEntity.setMontoPagado(this.montoPagado);
