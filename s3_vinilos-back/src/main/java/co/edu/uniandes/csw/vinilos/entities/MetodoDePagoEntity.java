@@ -17,22 +17,12 @@ public class MetodoDePagoEntity extends BaseEntity implements Serializable {
     
     private enum pago{
     PSE, TAJETACREDITO
-}
-    private long idPago;
-    
+}   
     private long numeroTarjeta;
     
     private String cuentaPSE;
     
     private double montoPagado;
-
-    public long getIdPago() {
-        return idPago;
-    }
-
-    public void setIdPago(long idPago) {
-        this.idPago = idPago;
-    }
 
     public long getNumeroTarjeta() {
         return numeroTarjeta;

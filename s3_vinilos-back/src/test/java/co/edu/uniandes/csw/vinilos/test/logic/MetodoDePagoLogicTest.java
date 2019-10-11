@@ -63,7 +63,7 @@ public class MetodoDePagoLogicTest {
         Assert.assertNotNull(result);
         MetodoDePagoEntity entity = em.find(MetodoDePagoEntity.class, result.getId());
           
-        Assert.assertEquals(entity.getIdPago(), result.getIdPago());       
+        Assert.assertEquals(entity.getId(), result.getId());       
         
     }
     

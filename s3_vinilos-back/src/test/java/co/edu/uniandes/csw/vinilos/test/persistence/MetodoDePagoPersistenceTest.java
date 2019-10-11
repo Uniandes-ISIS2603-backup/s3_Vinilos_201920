@@ -122,7 +122,7 @@ public class MetodoDePagoPersistenceTest {
         
   
         MetodoDePagoEntity entity = em.find(MetodoDePagoEntity.class, result.getId());
-        Assert.assertEquals(metodoDePago.getIdPago(), entity.getIdPago());
+        Assert.assertEquals(metodoDePago.getId(), entity.getId());
         
     }   
 
@@ -148,7 +148,7 @@ public class MetodoDePagoPersistenceTest {
         MetodoDePagoEntity entity = metodosDePago.get(0);
         MetodoDePagoEntity newEntity = ap.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getIdPago(), newEntity.getIdPago());
+        Assert.assertEquals(entity.getId(), newEntity.getId());
     }
     
     @Test
@@ -163,7 +163,7 @@ public class MetodoDePagoPersistenceTest {
 
         MetodoDePagoEntity metodoDePagoResp = em.find(MetodoDePagoEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getIdPago(), metodoDePagoResp.getIdPago());
+        Assert.assertEquals(newEntity.getId(), metodoDePagoResp.getId());
     }
     
     @Test
