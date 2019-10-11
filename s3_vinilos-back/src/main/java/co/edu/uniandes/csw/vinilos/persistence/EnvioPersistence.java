@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author Estudiante
+ * @author Juan gonzalez
  */
 @Stateless
 public class EnvioPersistence {

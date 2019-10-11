@@ -24,7 +24,7 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 /**
  *
- * @author Estudiante
+ * @author Juan gonzalez
  */
 @RunWith(Arquillian.class)
 public class EnvioLogicTest {

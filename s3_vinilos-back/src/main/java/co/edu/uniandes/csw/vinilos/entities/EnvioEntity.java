@@ -21,36 +21,63 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class EnvioEntity extends BaseEntity implements Serializable 
 {
+    /**
+     * Dia del envio
+     */
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fecha;
-       
+       /**
+        * si el envio fue enviado
+        */
     private boolean enviado;
     
+    /**
+     * Relacion con pedido
+     */
     @PodamExclude
     @OneToOne
     private PedidoEntity pedido;
 
+    /**
+     *pedir pedido
+     * @param pedido 
+     */
     public void setPedido(PedidoEntity pedido) {
         this.pedido = pedido;
     }
-
+/**
+ * dar la entidad de pedido
+ * @return el pedido
+ */
     public PedidoEntity getPedido() {
         return pedido;
     }
-    
+    /**
+     * dar fecha
+     * @return la fecha
+     */
     public Date getFecha() {
         return fecha;
     }
-
+/**
+ * dice si fue enviado
+ * @return si fue enviado
+ */
     public boolean isEnviado() {
         return enviado;
     }
-
+/**
+ * cambia la fecha
+ * @param fecha 
+ */
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+/**
+ * Cambia el boolean 
+ * @param enviado 
+ */
     public void setEnviado(boolean enviado) {
         this.enviado = enviado;
     }
