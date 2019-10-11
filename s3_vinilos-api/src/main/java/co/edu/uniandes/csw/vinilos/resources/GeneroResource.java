@@ -24,6 +24,12 @@ import javax.ws.rs.Produces;
 public class GeneroResource {
     
       private static final Logger LOGGER = Logger.getLogger(GeneroResource.class.getName());
+       /**
+     * Retorna un Genero DTO
+     *
+     * @param EnvioDto
+     * @return El genero dto.
+     */
       @POST
       public GeneroDTO createGeneroDTO(GeneroDTO generos)
       {

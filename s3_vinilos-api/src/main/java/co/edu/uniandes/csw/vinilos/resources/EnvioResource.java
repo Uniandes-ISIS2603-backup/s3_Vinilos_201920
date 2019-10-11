@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author Estudiante
+ * @author Juan gonzalez
  */
 @Path("envio")
 @Produces("application/json")
@@ -23,6 +23,13 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class EnvioResource {
     private static final Logger LOGGER = Logger.getLogger(EnvioResource.class.getName());
+     /**
+     * Retorna un envio DTO
+     *
+     * @param EnvioDto
+     * @param booksId El ID del libro que se asocia
+     * @return El envio dto.
+     */
       @POST
       public EnvioDTO createEnviooDTO(EnvioDTO envio)
       {
