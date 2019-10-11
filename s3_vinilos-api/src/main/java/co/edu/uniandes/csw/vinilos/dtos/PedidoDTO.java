@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+
 /**
  *
  * @author Stephania Otalora Giraldo
@@ -28,7 +29,7 @@ public class PedidoDTO implements Serializable
     private String observacion;
     private TipoPedido tipo;
     private ViniloDTO viniloCompra;
-    private EnvioDto envio;
+    private EnvioDTO envio;
     private Long id;
     
     
@@ -75,11 +76,11 @@ public class PedidoDTO implements Serializable
         this.viniloCompra = viniloCompra;
     }
 
-    public EnvioDto getEnvio() {
+    public EnvioDTO getEnvio() {
         return envio;
     }
 
-    public void setEnvio(EnvioDto envio) {
+    public void setEnvio(EnvioDTO envio) {
         this.envio = envio;
     }
 
@@ -108,7 +109,7 @@ public class PedidoDTO implements Serializable
                 this.viniloCompra = null;
             }
             if (pedidoEntity.getEnvio()!= null) {
-                this.envio = new EnvioDto(pedidoEntity.getEnvio());
+                this.envio = new EnvioDTO(pedidoEntity.getEnvio());
             } else {
                 this.envio = null;
             }
