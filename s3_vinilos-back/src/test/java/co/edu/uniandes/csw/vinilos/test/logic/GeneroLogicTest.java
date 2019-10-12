@@ -29,16 +29,29 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class GeneroLogicTest {
+    /**
+     * podamFactory
+     */
      private PodamFactory factory = new PodamFactoryImpl();
     
+     /**
+      * Relacion con logica de genero
+      */
     @Inject
     private GeneroLogic generoLogic;
     
+    /**
+     * relacion con entityManager
+     */
     @PersistenceContext
     private EntityManager em;
     
  
   
+    /**
+     * crea el deployment
+     * @return deployment
+     */
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -51,6 +64,10 @@ public class GeneroLogicTest {
     }
     
     
+    /**
+     * test de la creacion de genero
+     * @throws BusinessLogicException  si el genero no existe o no es que se pidio buscar
+     */
     @Test
     public void createGeneroTest() throws BusinessLogicException {
       GeneroEntity newEntity = factory.manufacturePojo(GeneroEntity.class);
@@ -62,6 +79,10 @@ public class GeneroLogicTest {
         
     }
     
+    /**
+     * test de genero cuando este sea null
+     * @throws BusinessLogicException si el genero es encontrado
+     */
     @Test (expected = BusinessLogicException.class)
     public void crearGeneroNombreNull() throws BusinessLogicException {
         

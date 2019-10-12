@@ -31,17 +31,34 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class GenerosPersistenceTest {
     
+    /**
+     * Relacion con EntityManager
+     */
    @PersistenceContext
    protected EntityManager em;
  
+   /**
+    * Relacion con la persistensia de genero
+    */
+   
     @Inject
     private GeneroPersistence generoPersistence;
     
+    /**
+     * Lista de generos
+     */
     private List<GeneroEntity> data = new ArrayList<>();
     
+    /**
+     * user transaction
+     */
     @Inject
     UserTransaction utx;
  
+    /**
+     * crea el Deployment
+     * @return Deployment
+     */
     @Deployment
     public static JavaArchive createDeployment() 
     {
@@ -51,9 +68,16 @@ public class GenerosPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
+    
+    /**
+     * relacion con genero persistence
+     */
     @Inject
     GeneroPersistence ep;
     
+    /**
+     * test configuracion
+     */
     @Before
     public void configTest() {
         try {
@@ -72,11 +96,17 @@ public class GenerosPersistenceTest {
         }
     }
     
+    /**
+     * borrar datos
+     */
      private void clearData() 
     {
         em.createQuery("delete from GeneroEntity").executeUpdate();
     }
 
+     /**
+      * agregar datos
+      */
      private void insertData() 
      {
         PodamFactory factory = new PodamFactoryImpl();
@@ -87,7 +117,9 @@ public class GenerosPersistenceTest {
             data.add(entity);
         }
     }
-     
+     /**
+      * crea el test de la persistencia 
+      */
     @Test
     public void createTest() 
     {
@@ -99,6 +131,9 @@ public class GenerosPersistenceTest {
         Assert.assertEquals(genero.getNombre(), entity.getNombre());
     }
     
+    /**
+     * test de busqueda del genero
+     */
     @Test
     public void getGeneroTest() 
     {
@@ -108,7 +143,9 @@ public class GenerosPersistenceTest {
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
     
-    
+    /**
+     * Test de la actualizacion
+     */
      @Test
     public void updateReviewTest()
     {
@@ -122,7 +159,9 @@ public class GenerosPersistenceTest {
      
     }
     
-     
+     /**
+      * test de el borrado
+      */
     @Test
     public void deleteReviewTest() 
     {

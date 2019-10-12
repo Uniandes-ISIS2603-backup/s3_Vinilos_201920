@@ -9,8 +9,7 @@ import co.edu.uniandes.csw.vinilos.entities.EnvioEntity;
 import co.edu.uniandes.csw.vinilos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vinilos.persistence.EnvioPersistence;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -27,17 +26,27 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * @author Juan gonzalez
  */
 @RunWith(Arquillian.class)
-public class EnvioLogicTest {
+public class EnvioLogicTest 
+{
+    /**
+     * podam factory 
+     */
      private PodamFactory factory = new PodamFactoryImpl();
     
+     /**
+      * conexion con logica de envio
+      */
     @Inject
     private EnvioLogic envioLogic;
     
-    @PersistenceContext
-    private EntityManager em;
+   
     
  
   
+    /**
+     * creacion del entorno
+     * @return deployment
+     */
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -49,7 +58,11 @@ public class EnvioLogicTest {
                
     }
     
-    
+    /**
+     * en este test de envio solo se tomo como parametro la creacion pueso que es autogenerado
+     * por la aplicacion asi que solo se revisa que exista.
+     * @throws BusinessLogicException si es nula 
+     */
     @Test
     public void createEnvioTest() throws BusinessLogicException {
       EnvioEntity newEntity = factory.manufacturePojo(EnvioEntity.class);
