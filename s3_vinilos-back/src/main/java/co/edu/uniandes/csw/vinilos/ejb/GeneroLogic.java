@@ -35,7 +35,7 @@ public class GeneroLogic {
    }
 
     
-   public GeneroEntity updateGenero(Long generoId, GeneroEntity generoEntity) throws BusinessLogicException 
+   public GeneroEntity updateGenero( GeneroEntity generoEntity) throws BusinessLogicException 
    {
        if(generoEntity.getNombre()==null){
             throw new BusinessLogicException("El nombre del genero está vacío");

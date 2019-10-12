@@ -14,7 +14,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author Estudiante
+ * @author juan gonzalez
  */
 @Stateless
 public class EnvioLogic {
@@ -43,9 +43,9 @@ public class EnvioLogic {
    }
 
     
-   public EnvioEntity updateEnvio(Long envioId, EnvioEntity envioEntity) throws BusinessLogicException 
+   public EnvioEntity updateEnvio( EnvioEntity envioEntity) throws BusinessLogicException 
    {
-       if(envioEntity.getFecha()==null){
+       if(null==envioEntity.getFecha()){
             throw new BusinessLogicException("La fehca no existe");
         }
        EnvioEntity newEntity = persistence.update(envioEntity);
