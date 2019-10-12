@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "c8cd4f62-1f75-4367-85d7-478c044014af",
+		"name": "GeneroResourseTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
