@@ -19,11 +19,15 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class UsuarioPersistence {
     
+    /**
+     * entity manager
+     */
     @PersistenceContext(unitName = "vinilosPU")
     protected EntityManager em;
     
-    /*
-    Crea un usuario en la base de datos
+    /**
+    * Crea un usuario en la base de datos
+    * @param usuario usuario
     */
     public UsuarioEntity create(UsuarioEntity usuario){
         //throw new java.lang.UnsupportedOperationException("Not supperted yet.");
@@ -32,21 +36,27 @@ public class UsuarioPersistence {
         return usuario;
     }
     
-    /*
-    Busca un usuario en la base de datos
+    /**
+    * Busca un usuario en la base de datos
+    * @param usuarioId id del usuario
     */
     public UsuarioEntity find(Long usuarioId){
         return em.find(UsuarioEntity.class, usuarioId);
     }
     
-    /*
-    Devuelve todos los usuarios del la base de datos
+    /**
+    * Devuelve todos los usuarios del la base de datos
     */
     public List<UsuarioEntity> findAll(){
         TypedQuery<UsuarioEntity> query = em.createQuery("select u from UsuarioEntity u", UsuarioEntity.class);
         return query.getResultList();
     }
     
+    /**
+     * Busca y devuleve el usuario segun el email
+     * @param correo email
+     * @return usuario
+     */
     public UsuarioEntity findbyEMail(String correo){
         TypedQuery<UsuarioEntity> query = em.createQuery("select e from UsuarioEntity e where e.correo = :correo", UsuarioEntity.class);
         query = query.setParameter("correo", correo);
@@ -62,15 +72,18 @@ public class UsuarioPersistence {
         return result;
     }
     
-    /*
-    Actualiza un usuario en la base de datos
+    /**
+    * Actualiza un usuario en la base de datos
+    * @param newUsuario usuario nuevo
+    * @return usuario nuevo
     */
     public UsuarioEntity update(UsuarioEntity newUsuario){      
         return em.merge(newUsuario);
     }
     
-    /*
-    Elimina el usuario de la base datos
+    /**
+    * Elimina el usuario de la base datos
+    * @param usuarioId id del usuario
     */
     public void delete(Long usuarioId){
         em.remove(em.find(UsuarioEntity.class, usuarioId));

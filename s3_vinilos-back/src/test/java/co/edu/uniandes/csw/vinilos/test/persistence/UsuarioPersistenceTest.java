@@ -33,17 +33,33 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class UsuarioPersistenceTest {
     
+    /**
+     * entity manager
+     */
     @PersistenceContext
     private EntityManager em;
     
+    /**
+     * usuario persistence
+     */
     @Inject
     private UsuarioPersistence ep;
     
+    /**
+     * usuario transaction
+     */
     @Inject
     UserTransaction utx;
     
+    /**
+     * data
+     */
     private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
     
+    /**
+     * Crea el entorno
+     * @return javaArchive
+     */
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -53,6 +69,9 @@ public class UsuarioPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
+    /**
+     * setUp
+     */
     @Before
     public void setUp() {
         try {
@@ -71,8 +90,8 @@ public class UsuarioPersistenceTest {
         }
     }
     
-    /*
-    crea los datos de la lista para las pruebas
+    /**
+    *crea los datos de la lista para las pruebas
     */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -84,14 +103,16 @@ public class UsuarioPersistenceTest {
         }
     }
     
-    /*
-    Limpia la lista
+    /**
+    *Limpia la lista
     */
     private void clearData() {
         em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
     
-    
+    /**
+     * test creacion usuario
+     */
     @Test
     public void createUsuarioTest(){
         PodamFactory factory = new PodamFactoryImpl();
@@ -103,6 +124,9 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(usuario.getName(), entity.getName());
     }
     
+    /**
+     * test dar usuarios
+     */
     @Test
     public void getUsuariosTest() {
         List<UsuarioEntity> list = ep.findAll();
@@ -118,6 +142,9 @@ public class UsuarioPersistenceTest {
         }
     }
     
+    /**
+     * test dar un usuario
+     */
     @Test
     public void getUsuarioTest() {
         UsuarioEntity entity = data.get(0);
@@ -126,6 +153,9 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
     
+    /**
+     * test actualizar usuario
+     */
     @Test
     public void updateUsuarioTest() {
         UsuarioEntity entity = data.get(0);
@@ -141,6 +171,9 @@ public class UsuarioPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
     
+    /**
+     * test eliminar usuario
+     */
     @Test
     public void deleteUsuarioTest() {
         UsuarioEntity entity = data.get(0);

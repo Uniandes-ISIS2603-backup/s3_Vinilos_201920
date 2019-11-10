@@ -56,4 +56,26 @@ public class GeneroEntity extends BaseEntity implements Serializable {
     {
         return nombre;
     }
+    
+    /**
+     * usuario
+     */
+    @ManyToOne
+    private UsuarioEntity usuario;
+
+    /**
+     * Da el usuario
+     * @return 
+     */
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * Cambia el usuario
+     * @param usuario 
+     */
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
 }

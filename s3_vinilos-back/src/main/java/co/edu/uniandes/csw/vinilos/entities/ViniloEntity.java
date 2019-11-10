@@ -26,9 +26,33 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private String estado;
     private Boolean disponible;
     
+    /**
+     * Dueño
+     */
     @PodamExclude
     @ManyToOne
     private UsuarioEntity duenio;
+    
+    /**
+     * VinilosArtista
+     */
+    @PodamExclude
+    @ManyToOne
+    private ArtistaEntity vinilosArtista;
+    
+    /**
+     * carrito
+     */
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity carrito;
+    
+    /**
+     * lista de deseos
+     */
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity deseos;
     
     @PodamExclude
     @OneToMany
@@ -49,10 +73,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     public void setVinilosArtista(ArtistaEntity vinilosArtista) {
         this.vinilosArtista = vinilosArtista;
     }
-    
-    @PodamExclude
-    @ManyToOne
-    private ArtistaEntity vinilosArtista;
+       
     /**
      * @return the nombre
      */
@@ -203,12 +224,45 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     }
 
     /**
+     * Da el carrito
+     * @return carrito
+     */
+    public UsuarioEntity getCarrito() {
+        return carrito;
+    }
+
+    /**
+     * Da la lista de deseos
+     * @return deseos
+     */
+    public UsuarioEntity getDeseos() {
+        return deseos;
+    }
+    
+    /**
+     * Cambia el duenio
      * @param duenio the duenio to set
      */
     public void setDuenio(UsuarioEntity duenio) {
         this.duenio = duenio;
     }
 
+    /**
+     * Cambia el carrito
+     * @param carrito carrito
+     */
+    public void setCarrito(UsuarioEntity carrito) {
+        this.carrito = carrito;
+    }
+
+    /**
+     * Cambia la lsita de deseos
+     * @param deseos deseos
+     */
+    public void setDeseos(UsuarioEntity deseos) {
+        this.deseos = deseos;
+    }
+    
     /**
      * @return the vinilosIntercambio
      */

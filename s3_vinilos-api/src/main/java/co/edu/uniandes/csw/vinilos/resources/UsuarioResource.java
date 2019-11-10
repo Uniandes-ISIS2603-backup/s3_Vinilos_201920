@@ -24,8 +24,16 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class UsuarioResource {
     
+    /**
+     * logger
+     */
     private static final Logger LOGGER = Logger.getLogger(UsuarioResource.class.getName());
     
+    /**
+     * crea un usuariodto
+     * @param usuario usuario
+     * @return usuarioDTO
+     */
     @POST
     public UsuarioDTO createUsuario(UsuarioDTO usuario){
        return usuario; 

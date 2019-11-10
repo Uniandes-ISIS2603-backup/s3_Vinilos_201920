@@ -11,10 +11,12 @@ import co.edu.uniandes.csw.vinilos.entities.UsuarioEntity;
 import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
 import co.edu.uniandes.csw.vinilos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vinilos.persistence.UsuarioPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import static org.glassfish.pfl.basic.tools.argparser.ElementParser.factory;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -34,16 +36,39 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class UsuarioLogicTest {
     
+    /**
+     * factory
+     */
     private PodamFactory factory = new PodamFactoryImpl();
     
-    private List<UsuarioEntity> data;
+    /**
+     * Lista de usuarios 
+     */
+    private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
     
+    /**
+     * Usuariologic
+     */
     @Inject
     private UsuarioLogic usuarioLogic;
     
+    /**
+     * Entity manager
+     */
     @PersistenceContext
     private EntityManager em;
     
+    /**
+     * User transaction
+     */
+    @Inject
+    private UserTransaction utx;
+     
+    /**
+     * @return Devuelve el jar que Arquillian va a desplegar en Payara embebido.
+     * El jar contiene las clases, el descriptor de la base de datos y el
+     * archivo beans.xml para resolver la inyección de dependencias.
+     */
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -55,31 +80,57 @@ public class UsuarioLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
-    private void insertData(){
-        for(int i=0; i < 3 ;i++){
-                UsuarioEntity usuario = factory.manufacturePojo(UsuarioEntity.class);
-                em.persist(usuario);
-                data.add(usuario);
+    
+    /**
+     * Configuración inicial de la prueba
+     */
+    @Before
+    public void configTest(){
+        try {
+            utx.begin();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         }
     }
     
-    @Before
-    public void configTest(){
-        try{
-            
-        }catch(Exception e){
-            
+    /**
+     * Limpia las tablas
+     */
+    private void clearData() {
+        em.createQuery("delete from PedidoEntity").executeUpdate();
+    }
+    
+    /**
+     * Inserta usuarios en las tablas
+     */
+    private void insertData(){
+        for(int i=0; i < 1 ;i++){
+                UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
+                entity.setCelular(i);
+                entity.setCorreo("correo" + i);
+                data.add(entity);
+                em.persist(entity);             
         }
     }
     
     @Test
     public void createUsuarioTest() throws BusinessLogicException{
         UsuarioEntity usuario = factory.manufacturePojo(UsuarioEntity.class);
+        usuario.setName("pepito");
         UsuarioEntity result = usuarioLogic.createUsuario(usuario);
         Assert.assertNotNull(result);
         
         UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());    
         Assert.assertEquals(usuario.getName(), entity.getName());
+        usuarioLogic.deleteUsuario(usuario.getId());
     }
     
     @Test(expected = BusinessLogicException.class)
@@ -90,6 +141,8 @@ public class UsuarioLogicTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setCorreo(entity.getCorreo());
         UsuarioEntity result = usuarioLogic.createUsuario(newEntity);
+        usuarioLogic.deleteUsuario(entity.getId());
+        usuarioLogic.deleteUsuario(newEntity.getId());
     
     }
     
@@ -99,6 +152,7 @@ public class UsuarioLogicTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setName(null);
         UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        usuarioLogic.deleteUsuario(newEntity.getId());
     }
     
     @Test(expected = BusinessLogicException.class)
@@ -106,7 +160,8 @@ public class UsuarioLogicTest {
         
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setCorreo(null);
-        UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        UsuarioEntity result = usuarioLogic.createUsuario(newEntity); 
+        usuarioLogic.deleteUsuario(newEntity.getId());
     }
     
     @Test(expected = BusinessLogicException.class)
@@ -114,7 +169,8 @@ public class UsuarioLogicTest {
         
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setCelular(null);
-        UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        UsuarioEntity result = usuarioLogic.createUsuario(newEntity); 
+        usuarioLogic.deleteUsuario(newEntity.getId());
     }
     
     @Test(expected = BusinessLogicException.class)
@@ -123,6 +179,7 @@ public class UsuarioLogicTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setDireccion(null);
         UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        usuarioLogic.deleteUsuario(newEntity.getId());
     }
     
     @Test(expected = BusinessLogicException.class)
@@ -130,7 +187,8 @@ public class UsuarioLogicTest {
         
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setPais(null);
-        UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        UsuarioEntity result = usuarioLogic.createUsuario(newEntity);
+        usuarioLogic.deleteUsuario(newEntity.getId());
     }
     
     @Test(expected = BusinessLogicException.class)
@@ -139,5 +197,54 @@ public class UsuarioLogicTest {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         newEntity.setFechaNacim(null);
         UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        usuarioLogic.deleteUsuario(newEntity.getId());
+    }
+    
+    
+    
+    /**
+     * Prueba para consultar un Usuario.
+     */
+    @Test
+    public void getUsuarioTest() {
+        UsuarioEntity entity = data.get(0);
+        UsuarioEntity resultEntity = usuarioLogic.getUsuario(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(resultEntity.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(resultEntity.getCelular(), entity.getCelular());
+    }
+    
+     /**
+     * Prueba para actualizar un Usuario.
+     */
+    @Test
+    public void updateUsuarioTest() throws BusinessLogicException {
+        UsuarioEntity entity = data.get(0);
+        
+        usuarioLogic.updateUsuario(entity.getId() , entity);
+
+        UsuarioEntity resultEntity = em.find(UsuarioEntity.class, entity.getId());
+
+        Assert.assertEquals(entity.getId(), resultEntity.getId());       
+        Assert.assertEquals(resultEntity.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(resultEntity.getCelular(), entity.getCelular());
+    }
+    
+    /**
+     * Prueba para eliminar un Usuario.
+     *
+     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
+     */
+    @Test
+    public void deleteUsuarioTest() throws BusinessLogicException {
+        UsuarioEntity entity = data.get(0);
+        System.out.println(entity);
+        /*
+        List<PedidoEntity> pedido = new ArrayList<PedidoEntity>();
+        entity.setPedidos(pedido);
+        List<ViniloEntity> venta = new ArrayList<ViniloEntity>();
+        entity.setVinilosVenta(venta);*/
+        usuarioLogic.deleteUsuario(entity.getId());
     }
 }
