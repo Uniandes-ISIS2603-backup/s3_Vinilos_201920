@@ -13,20 +13,6 @@ import java.io.Serializable;
  * @author Estudiante
  */
 public class ViniloDTO implements Serializable{
-
-    /**
-     * @return the imagen
-     */
-    public String getImagen() {
-        return imagen;
-    }
-
-    /**
-     * @param imagen the imagen to set
-     */
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
     
     private Long id;
     private String nombre;
@@ -37,7 +23,6 @@ public class ViniloDTO implements Serializable{
     private String estado;
     private Boolean disponible;
     private UsuarioDTO duenio;
-    private String imagen;
     
     public ViniloDTO(){
         
@@ -52,7 +37,6 @@ public class ViniloDTO implements Serializable{
         setInformacion(entidad.getInformacion());
         setEstado(entidad.getEstado());
         setDisponible(entidad.isDisponible());
-        setImagen(entidad.getImagen());
     }
     
     public ViniloEntity toEntity() {
@@ -65,7 +49,6 @@ public class ViniloDTO implements Serializable{
         entidad.setInformacion(this.getInformacion());
         entidad.setEstado(this.getEstado());
         entidad.setDisponible(this.isDisponible());
-        entidad.setImagen(this.getImagen());
         return entidad;
     }
 
