@@ -75,8 +75,6 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     public GeneroEntity getGeneroVinilo() {
         return generoVinilo;
     }
-    
-    private String imagen;
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
@@ -90,19 +88,6 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private PedidoEntity pedidoIntercambio;
     
-    /**
-     * @return the imagen
-     */
-    public String getImagen() {
-        return imagen;
-    }
-
-    /**
-     * @param imagen the imagen to set
-     */
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
 
     public ArtistaEntity getVinilosArtista() {
         return vinilosArtista;
