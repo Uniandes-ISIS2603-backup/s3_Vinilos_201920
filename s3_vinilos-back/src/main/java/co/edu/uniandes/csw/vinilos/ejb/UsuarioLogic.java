@@ -34,7 +34,7 @@ public class UsuarioLogic {
     public UsuarioEntity createUsuario(UsuarioEntity usuario) throws BusinessLogicException{
         
         if(persistence.findbyEMail(usuario.getCorreo()) != null){
-            throw new BusinessLogicException("Ya existe un usuario con ese correo \""+ usuario.getCorreo() + "\"");
+            throw new BusinessLogicException("Ya existe un usuario con ese correo");
         }
         if(usuario.getNombre() == null){
             throw new BusinessLogicException("El nombre no puede ser nulo");
