@@ -64,6 +64,28 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne
+    private GeneroEntity generoVinilo;
+
+    public void setGeneroVinilo(GeneroEntity generoVinilo) {
+        this.generoVinilo = generoVinilo;
+    }
+
+    public GeneroEntity getGeneroVinilo() {
+        return generoVinilo;
+    }
+    
+    private String imagen;
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+    
+    @PodamExclude
+    @ManyToOne
     private PedidoEntity pedidoIntercambio;
 
     public ArtistaEntity getVinilosArtista() {
