@@ -74,7 +74,7 @@ public class MetodoDePagoDTO implements Serializable{
         this.numeroTarjeta = metodoDePagoEntity.getNumeroTarjeta();
         this.cuentaPSE = metodoDePagoEntity.getCuentaPSE();
         this.montoPagado = metodoDePagoEntity.getMontoPagado();
-        this.pago = metodoDePagoEntity.getPago();
+     //   this.pago = metodoDePagoEntity.getPago();
     }
 }
 
