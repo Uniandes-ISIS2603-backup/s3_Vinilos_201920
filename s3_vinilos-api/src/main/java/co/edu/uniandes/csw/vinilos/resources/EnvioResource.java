@@ -38,7 +38,7 @@ public class EnvioResource {
    
        @POST
        @Path("{enviosId: \\d+}")
-     public EnvioDTO crearMetodoDePago(@PathParam("enviosId")EnvioDTO envio) throws BusinessLogicException{
+     public EnvioDTO crearMetodoDePago(@PathParam("artistasId")EnvioDTO envio) throws BusinessLogicException{
     EnvioEntity envioEntity = envio.toEntity();
     envioEntity = logica.createEnvio(envioEntity);
     return new EnvioDTO(envioEntity);
@@ -53,7 +53,7 @@ public class EnvioResource {
     }
     @DELETE
 @Path("{enviosId: \\d+}")
-public void deleteArtista(@PathParam("enviosId") Long envioId) throws BusinessLogicException {
+public void deleteArtista(@PathParam("artistasId") Long envioId) throws BusinessLogicException {
     
     if (logica.getEnvio(envioId) == null) {
         throw new WebApplicationException("El recurso /envios/" + envioId + " no existe.", 404);
