@@ -60,6 +60,7 @@ public class GeneroEntity extends BaseEntity implements Serializable {
     /**
      * usuario
      */
+    @PodamExclude
     @ManyToOne
     private UsuarioEntity usuario;
 

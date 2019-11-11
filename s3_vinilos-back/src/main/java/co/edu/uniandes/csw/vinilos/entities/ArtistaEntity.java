@@ -50,6 +50,7 @@ public class ArtistaEntity extends BaseEntity implements Serializable{
     /**
      * usuario
      */
+    @PodamExclude
     @ManyToOne
     private UsuarioEntity usuario;
 
