@@ -59,7 +59,7 @@ public class UsuarioDTO implements Serializable {
     /**
      * contraseña
      */
-    private String contraseña;
+    private String contrasena;
     
     ///////SETS
     /**
@@ -120,11 +120,11 @@ public class UsuarioDTO implements Serializable {
 
     /**
      * Cambia la contraseña
-     * @param contraseña contraseña
+     * @param contrasena contraseña
      * 
      */
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContraseña(String contrasena) {
+        this.contrasena = contrasena;
     }
  
     /////////////GETS
@@ -189,8 +189,8 @@ public class UsuarioDTO implements Serializable {
      * Da la contraseña 
      * @return contraseña
      */
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
     
     /**
@@ -201,13 +201,13 @@ public class UsuarioDTO implements Serializable {
     
     public UsuarioDTO(UsuarioEntity personaje) {
         if(personaje != null) {
-            this.nombre = personaje.getName();
+            this.nombre = personaje.getNombre();
             this.celular = personaje.getCelular();
             this.correo = personaje.getCorreo();
             this.direccion = personaje.getDireccion();
             this.fechaNacim = personaje.getFechaNacim();
             this.pais = personaje.getPais();
-            this.contraseña = personaje.getContraseña();
+            this.contrasena = personaje.getContrasena();
             this.id = personaje.getId();
         }
     }
@@ -215,13 +215,13 @@ public class UsuarioDTO implements Serializable {
     public UsuarioEntity toEntity() {
         UsuarioEntity entity = new UsuarioEntity();
         entity.setId(this.id);
-        entity.setName(this.nombre);    
+        entity.setNombre(this.nombre);    
         entity.setCelular(this.celular);
         entity.setCorreo(this.correo);
         entity.setDireccion(this.direccion);
         entity.setFechaNacim(this.fechaNacim);
         entity.setPais(this.pais);
-        entity.setContraseña(this.contraseña);
+        entity.setContrasena(this.contrasena);
         return entity;
     }
 }

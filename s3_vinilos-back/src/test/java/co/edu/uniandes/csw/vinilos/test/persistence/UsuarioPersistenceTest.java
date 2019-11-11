@@ -121,7 +121,7 @@ public class UsuarioPersistenceTest {
         Assert.assertNotNull(result);
         
         UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());    
-        Assert.assertEquals(usuario.getName(), entity.getName());
+        Assert.assertEquals(usuario.getNombre(), entity.getNombre());
     }
     
     /**
@@ -150,7 +150,7 @@ public class UsuarioPersistenceTest {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity newEntity = ep.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
     }
     
     /**
@@ -168,7 +168,7 @@ public class UsuarioPersistenceTest {
 
         UsuarioEntity resp = em.find(UsuarioEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
     }
     
     /**

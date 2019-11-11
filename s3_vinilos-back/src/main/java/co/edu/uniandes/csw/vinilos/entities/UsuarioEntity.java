@@ -60,7 +60,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     /**
     *contraseña
     */
-    private String contraseña;
+    private String contrasena;
     
     //// RELACIONES
     /**
@@ -106,13 +106,6 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private List<ViniloEntity> vinilosVenta = new ArrayList<ViniloEntity>();
     
     /////// Gets
-    /**
-     *Da el nombre
-     * @return nombre
-     */
-    public String getName(){
-        return nombre;
-    }
     
     /**
     *Da el correo
@@ -158,8 +151,8 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     *Da la contraseña
     * @return contraseña
     */
-    public String getContraseña(){
-        return contraseña;
+    public String getContrasena(){
+        return contrasena;
     }
         
     /**
@@ -222,14 +215,6 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     ////// Sets 
     
     /**
-     * Cambia el nombre
-     * @param pName nombre
-     */
-    public void setName(String pName){
-        this.nombre = pName;
-    }
-    
-    /**
      * Cambia el correo
      * @param pCorreo correo
      */
@@ -271,10 +256,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     
     /**
      * Cambia la contraseña
-     * @param pContraseña contraseña
+     * @param pContrasena contraseña
      */
-    public void setContraseña(String pContraseña){
-        this.contraseña = pContraseña;
+    public void setContrasena(String pContrasena){
+        this.contrasena = pContrasena;
     }
     
     /**

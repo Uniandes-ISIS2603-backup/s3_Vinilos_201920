@@ -36,7 +36,7 @@ public class UsuarioLogic {
         if(persistence.findbyEMail(usuario.getCorreo()) != null){
             throw new BusinessLogicException("Ya existe un usuario con ese correo \""+ usuario.getCorreo() + "\"");
         }
-        if(usuario.getName() == null){
+        if(usuario.getNombre() == null){
             throw new BusinessLogicException("El nombre no puede ser nulo");
         }
         if(usuario.getCelular() == null){
@@ -54,7 +54,7 @@ public class UsuarioLogic {
         if(usuario.getFechaNacim() == null){
             throw new BusinessLogicException("La fecha no puede ser nulo");
         }
-        if(usuario.getContraseña() == null){
+        if(usuario.getContrasena() == null){
             throw new BusinessLogicException("La contraseña no puede ser nulo");
         }
         usuario = persistence.create(usuario);

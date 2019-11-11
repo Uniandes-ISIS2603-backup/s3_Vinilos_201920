@@ -5,7 +5,13 @@
  */
 package co.edu.uniandes.csw.vinilos.test.logic;
 
+import co.edu.uniandes.csw.vinilos.ejb.ArtistaLogic;
+import co.edu.uniandes.csw.vinilos.ejb.GeneroLogic;
+import co.edu.uniandes.csw.vinilos.ejb.PedidoLogic;
 import co.edu.uniandes.csw.vinilos.ejb.UsuarioLogic;
+import co.edu.uniandes.csw.vinilos.ejb.ViniloLogic;
+import co.edu.uniandes.csw.vinilos.entities.ArtistaEntity;
+import co.edu.uniandes.csw.vinilos.entities.GeneroEntity;
 import co.edu.uniandes.csw.vinilos.entities.PedidoEntity;
 import co.edu.uniandes.csw.vinilos.entities.UsuarioEntity;
 import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
@@ -74,9 +80,12 @@ public class UsuarioLogicTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(UsuarioEntity.class.getPackage())
                 .addPackage(PedidoEntity.class.getPackage())
+                .addPackage(ViniloEntity.class.getPackage())
+                .addPackage(ArtistaEntity.class.getPackage())
+                .addPackage(GeneroEntity.class.getPackage())
                 .addPackage(UsuarioLogic.class.getPackage())
                 .addPackage(UsuarioPersistence.class.getPackage())
-                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+               .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
@@ -105,7 +114,7 @@ public class UsuarioLogicTest {
      * Limpia las tablas
      */
     private void clearData() {
-        em.createQuery("delete from PedidoEntity").executeUpdate();
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
     
     /**
@@ -124,12 +133,12 @@ public class UsuarioLogicTest {
     @Test
     public void createUsuarioTest() throws BusinessLogicException{
         UsuarioEntity usuario = factory.manufacturePojo(UsuarioEntity.class);
-        usuario.setName("pepito");
+        usuario.setNombre("pepito");
         UsuarioEntity result = usuarioLogic.createUsuario(usuario);
         Assert.assertNotNull(result);
         
         UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());    
-        Assert.assertEquals(usuario.getName(), entity.getName());
+        Assert.assertEquals(usuario.getNombre(), entity.getNombre());
         usuarioLogic.deleteUsuario(usuario.getId());
     }
     
@@ -150,7 +159,7 @@ public class UsuarioLogicTest {
     public void crearNombreNullTest() throws BusinessLogicException {
         
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
-        newEntity.setName(null);
+        newEntity.setNombre(null);
         UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
         usuarioLogic.deleteUsuario(newEntity.getId());
     }
@@ -200,7 +209,14 @@ public class UsuarioLogicTest {
         usuarioLogic.deleteUsuario(newEntity.getId());
     }
     
-    
+    @Test(expected = BusinessLogicException.class)
+    public void crearContrasenaNullTest() throws BusinessLogicException {
+        
+        UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+        newEntity.setContrasena(null);
+        UsuarioEntity result = usuarioLogic.createUsuario(newEntity);  
+        usuarioLogic.deleteUsuario(newEntity.getId());
+    }
     
     /**
      * Prueba para consultar un Usuario.
