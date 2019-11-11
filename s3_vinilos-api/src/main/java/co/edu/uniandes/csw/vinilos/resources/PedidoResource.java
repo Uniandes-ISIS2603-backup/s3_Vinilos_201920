@@ -59,9 +59,9 @@ public class PedidoResource {
     @GET
     public List<PedidoDetailDTO> getPedidos() {
         LOGGER.info("PedidoResource getPedidos: input: void");
-        List<PedidoDetailDTO> listaEditoriales = listEntityPedidos(pedidoLogic.getPedidos());
-        LOGGER.log(Level.INFO, "PedidoResource getPedidos: output: {0}", listaEditoriales);
-        return listaEditoriales;
+        List<PedidoDetailDTO> listaPedidos = listEntityPedidos(pedidoLogic.getPedidos());
+        LOGGER.log(Level.INFO, "PedidoResource getPedidos: output: {0}", listaPedidos);
+        return listaPedidos;
     }
     
     private List<PedidoDetailDTO> listEntityPedidos(List<PedidoEntity> entityList) {

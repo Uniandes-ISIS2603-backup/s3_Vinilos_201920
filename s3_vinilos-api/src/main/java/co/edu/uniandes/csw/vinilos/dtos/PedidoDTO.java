@@ -8,8 +8,11 @@ package co.edu.uniandes.csw.vinilos.dtos;
 import co.edu.uniandes.csw.vinilos.adapters.DateAdapter;
 import co.edu.uniandes.csw.vinilos.entities.PedidoEntity;
 import co.edu.uniandes.csw.vinilos.entities.PedidoEntity.TipoPedido;
+import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -31,6 +34,10 @@ public class PedidoDTO implements Serializable
     private ViniloDTO viniloCompra;
     private EnvioDTO envio;
     private Long id;
+    private List<ViniloDTO> vinilosIntercambio;
+    private MetodoDePagoDTO metodoPago;
+    private UsuarioDTO usuario;
+    
     
     
     public PedidoDTO()
@@ -91,7 +98,32 @@ public class PedidoDTO implements Serializable
     public void setId(Long id) {
         this.id = id;
     }
-        
+
+    public List<ViniloDTO> getVinilosIntercambio() {
+        return vinilosIntercambio;
+    }
+
+    public void setVinilosIntercambio(List<ViniloDTO> vinilosIntercambio) {
+        this.vinilosIntercambio = vinilosIntercambio;
+    }
+
+    public MetodoDePagoDTO getMetodoPago() {
+        return metodoPago;
+    }
+
+    public void setMetodoPago(MetodoDePagoDTO metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public UsuarioDTO getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
+    }
+    
+    
     /**
      * Constructor a partir de la entidad
      *
@@ -103,6 +135,7 @@ public class PedidoDTO implements Serializable
             this.fechaGeneracion = pedidoEntity.getFechaGeneracion();
             this.observacion = pedidoEntity.getObservacion();
             this.tipo = pedidoEntity.getTipo();
+            this.id = pedidoEntity.getId();
             if (pedidoEntity.getViniloCompra()!= null) {
                 this.viniloCompra = new ViniloDTO(pedidoEntity.getViniloCompra());
             } else {
@@ -113,6 +146,19 @@ public class PedidoDTO implements Serializable
             } else {
                 this.envio = null;
             }
+            if (pedidoEntity.getMetodoPago()!= null) {
+                this.metodoPago = new MetodoDePagoDTO(pedidoEntity.getMetodoPago());
+            } else {
+                this.metodoPago = null;
+            }
+            if(pedidoEntity.getUsuario()!=null)
+             {
+                 this.usuario = new UsuarioDTO(pedidoEntity.getUsuario());
+             } else
+             {
+                 this.usuario = null;
+             }
+                
         }
     }
     
@@ -132,6 +178,14 @@ public class PedidoDTO implements Serializable
         }
         if (this.envio!= null) {
             pedidoEntity.setEnvio(this.envio.toEntity());
+        }
+        if(this.usuario!= null)
+        {
+            pedidoEntity.setUsuario(this.usuario.toEntity());
+        }
+        if(this.metodoPago!=null)
+        {
+            pedidoEntity.setMetodoPago(this.metodoPago.toEntity());
         }
         return pedidoEntity;
     }

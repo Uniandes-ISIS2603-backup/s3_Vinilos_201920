@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.vinilos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vinilos.persistence.PedidoPersistence;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,6 +49,7 @@ public class PedidoLogic {
             }
             if(pedido.getVinilosIntercambio()!=null)
             {
+                System.out.println(pedido.getVinilosIntercambio());
                 throw new BusinessLogicException("Se realiza una compra pero se seleccionaron vinilos de intercambio");
             }
             if(!pedido.getViniloCompra().isDisponible())
