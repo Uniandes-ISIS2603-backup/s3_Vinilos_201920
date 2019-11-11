@@ -18,6 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class ViniloEntity extends BaseEntity implements Serializable{
+    
     private String nombre;
     private Integer anio;
     private String coleccion;
@@ -25,6 +26,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private String informacion;
     private String estado;
     private Boolean disponible;
+    private String imagen;
     
     /**
      * Dueño
@@ -65,6 +67,20 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @ManyToOne
     private PedidoEntity pedidoIntercambio;
+    
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     public ArtistaEntity getVinilosArtista() {
         return vinilosArtista;
