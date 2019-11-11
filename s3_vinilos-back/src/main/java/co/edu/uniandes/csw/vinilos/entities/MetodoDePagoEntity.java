@@ -17,7 +17,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class MetodoDePagoEntity extends BaseEntity implements Serializable {
     
-    private enum pago{
+    public enum Pago{
     PSE, TAJETACREDITO
 }   
     private long numeroTarjeta;
@@ -25,6 +25,8 @@ public class MetodoDePagoEntity extends BaseEntity implements Serializable {
     private String cuentaPSE;
     
     private double montoPagado;
+    
+    private Pago pago;
     
     @PodamExclude
     @OneToOne
@@ -52,6 +54,22 @@ public class MetodoDePagoEntity extends BaseEntity implements Serializable {
 
     public void setMontoPagado(double montoPagado) {
         this.montoPagado = montoPagado;
+    }
+
+    public Pago getPago() {
+        return pago;
+    }
+
+    public void setPago(Pago pago) {
+        this.pago = pago;
+    }
+
+    public PedidoEntity getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(PedidoEntity pedido) {
+        this.pedido = pedido;
     }
     
     

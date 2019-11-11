@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.vinilos.test.logic;
 import co.edu.uniandes.csw.vinilos.ejb.PedidoLogic;
 import co.edu.uniandes.csw.vinilos.ejb.ViniloLogic;
 import co.edu.uniandes.csw.vinilos.entities.EnvioEntity;
+import co.edu.uniandes.csw.vinilos.entities.MetodoDePagoEntity;
 import co.edu.uniandes.csw.vinilos.entities.PedidoEntity;
 import co.edu.uniandes.csw.vinilos.entities.UsuarioEntity;
 import co.edu.uniandes.csw.vinilos.entities.ViniloEntity;
@@ -63,6 +64,7 @@ public class PedidoLogicTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(MetodoDePagoEntity.class.getPackage())
                 .addPackage(PedidoEntity.class.getPackage())
                 .addPackage(EnvioEntity.class.getPackage())
                 .addPackage(ViniloEntity.class.getPackage())

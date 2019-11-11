@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -48,20 +49,20 @@ public enum TipoPedido
 
        
     @PodamExclude
-    @OneToOne(mappedBy = "pedidoCompra", fetch=FetchType.LAZY)
+    @OneToOne(mappedBy = "pedidoCompra", cascade = CascadeType.PERSIST)
     private ViniloEntity viniloCompra;
 
     @PodamExclude
-    @OneToMany(mappedBy = "pedidoIntercambio")
-    private List<ViniloEntity> vinilosIntercambio = new ArrayList<ViniloEntity>();
+    @OneToMany(mappedBy = "pedidoIntercambio", cascade = CascadeType.PERSIST)
+    private List<ViniloEntity> vinilosIntercambio;
     
     @PodamExclude
-    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY)
+    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
     private EnvioEntity envio;
     
     @PodamExclude
-    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY)
-    private EnvioEntity metodoPago;
+    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private MetodoDePagoEntity metodoPago;
 
     /**
      * Devuelve el usuario.
@@ -222,7 +223,31 @@ public enum TipoPedido
      */
     public void addViniloIntercambio(ViniloEntity pedido)
     {
+        if(vinilosIntercambio == null)
+        {
+            vinilosIntercambio = new ArrayList<ViniloEntity>();
+        }
         vinilosIntercambio.add(pedido);
     }
-        
+      
+
+    /**
+     * Devuelve el metodo de pago del pedido.
+     *
+     * @return the metodoPago
+     */
+    public MetodoDePagoEntity getMetodoPago() {
+        return this.metodoPago;
+    }
+
+    /**
+     * Modifica el Metodo de Pago.
+     *
+     * @param metodoPago the metodoPago to set
+     */
+    public void setMetodoPago(MetodoDePagoEntity metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    
 }

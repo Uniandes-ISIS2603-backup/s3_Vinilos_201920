@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.vinilos.dtos;
 
 import co.edu.uniandes.csw.vinilos.entities.MetodoDePagoEntity;
+import co.edu.uniandes.csw.vinilos.entities.MetodoDePagoEntity.Pago;
 import java.io.Serializable;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -24,6 +25,8 @@ public class MetodoDePagoDTO implements Serializable{
     
     /*Monto pagado*/
     private double montoPagado;
+    
+    private Pago pago; 
     
     public MetodoDePagoDTO(){
         
@@ -55,7 +58,15 @@ public class MetodoDePagoDTO implements Serializable{
     public void setMontoPagado(double montoPagado) {
         this.montoPagado = montoPagado;
     }
- 
+
+    public Pago getPago() {
+        return pago;
+    }
+
+    public void setPago(Pago pago) {
+        this.pago = pago;
+    }
+     
   
 /*Metodo constructor de la clase */
  public MetodoDePagoDTO(MetodoDePagoEntity metodoDePagoEntity) {
@@ -63,6 +74,7 @@ public class MetodoDePagoDTO implements Serializable{
         this.numeroTarjeta = metodoDePagoEntity.getNumeroTarjeta();
         this.cuentaPSE = metodoDePagoEntity.getCuentaPSE();
         this.montoPagado = metodoDePagoEntity.getMontoPagado();
+        this.pago = metodoDePagoEntity.getPago();
     }
 }
 
@@ -72,6 +84,7 @@ public MetodoDePagoEntity toEntity() {
     metodoDePagoEntity.setNumeroTarjeta(this.numeroTarjeta);
     metodoDePagoEntity.setCuentaPSE(this.cuentaPSE);
     metodoDePagoEntity.setMontoPagado(this.montoPagado);
+    metodoDePagoEntity.setPago(this.pago);
     return metodoDePagoEntity;
 }
 

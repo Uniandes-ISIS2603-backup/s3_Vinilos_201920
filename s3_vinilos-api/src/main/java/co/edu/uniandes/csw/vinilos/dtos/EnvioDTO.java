@@ -5,9 +5,11 @@
  */
 package co.edu.uniandes.csw.vinilos.dtos;
 
+import co.edu.uniandes.csw.vinilos.adapters.DateAdapter;
 import co.edu.uniandes.csw.vinilos.entities.EnvioEntity;
 import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -24,31 +26,37 @@ public class EnvioDTO implements Serializable
     /**
      * fecha de envio
      */
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date fecha;
     /**
      * si se envio
      */
     private boolean fueEnviado;
+    
+    private PedidoDTO pedido;
+    
+    
+    
     /**
      * get de la id
      * @return id de la clase
      */
     public Long getId() {
-        return id;
+        return this.id;
     }
 /**
  * dar fecha
  * @return la fecha
  */
     public Date getFecha() {
-        return fecha;
+        return this.fecha;
     }
 /**
  * boolean de si fue enviado
  * @return si el envio se envio.
  */
     public boolean isFueEnviado() {
-        return fueEnviado;
+        return this.fueEnviado;
     }
 /**
  * set de la id
@@ -72,6 +80,21 @@ public class EnvioDTO implements Serializable
     public void setFueEnviado(boolean fueEnviado) {
         this.fueEnviado = fueEnviado;
     }
+
+    public PedidoDTO getPedido() {
+        return this.pedido;
+    }
+
+    public void setPedido(PedidoDTO pedido) {
+        this.pedido = pedido;
+    }
+    
+    
+    
+    public EnvioDTO()
+    {
+        
+    }
  /**
      * Constructor a partir de la entidad
      *
@@ -79,9 +102,20 @@ public class EnvioDTO implements Serializable
      */
     public EnvioDTO(EnvioEntity envioEntity) 
     {
+        if(envioEntity!=null)
+        {
         this.id = envioEntity.getId();
         this.fecha = envioEntity.getFecha();
         this.fueEnviado = envioEntity.isEnviado();
+        if(envioEntity.getPedido()!=null)
+        {
+            this.pedido= new PedidoDTO(envioEntity.getPedido());
+        }
+        else
+        {
+            this.pedido= null;
+        }
+        }
     }
    /**
      * Método para transformar el DTO a una entidad.
@@ -89,12 +123,12 @@ public class EnvioDTO implements Serializable
      * @return La entidad del envío asociado.
      */
     public EnvioEntity toEntity() 
-    {
-        
+    {        
         EnvioEntity envioEntity = new EnvioEntity();
-        envioEntity.setEnviado(this.isFueEnviado());
-        envioEntity.setFecha(this.getFecha());
-        envioEntity.setId(this.getId());
+        envioEntity.setEnviado(this.fueEnviado);
+        envioEntity.setFecha(this.fecha);
+        envioEntity.setPedido(this.pedido.toEntity());
+        
        
         return envioEntity;
     }
