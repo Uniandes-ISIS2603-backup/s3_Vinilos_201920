@@ -83,7 +83,7 @@ public class GeneroEntity extends BaseEntity implements Serializable {
         this.usuario = usuario;
     }
     @PodamExclude
-    @OneToMany(mappedBy = "vinilosGenero")
+    @OneToMany(mappedBy = "generoVinilo")
    private List<ViniloEntity> vinilos = new ArrayList<ViniloEntity>();
 
     public void setVinilos(List<ViniloEntity> vinilos) {
