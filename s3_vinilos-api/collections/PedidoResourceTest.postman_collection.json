@@ -54,12 +54,259 @@
 			"response": []
 		},
 		{
-			"name": "Crear un Pedido",
+			"name": "Crear un Pedido Aceptado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0c456f3-f313-4f2a-9b98-07d8361b111e",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_p\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"tipo\":\"COMPRA\",\n \"aceptado\":true,\n \"observacion\":null,\n \"envio\": null,\n \"fechaGeneracion\":\"2000-05-05T00:00:00-05:00\",\n \"vinilosIntercambio\": null,\n \"viniloCompra\":\n {\n \"nombre\":\"Si\",\n \"anio\": 2010,\n \"coleccion\":\"Lo del 2010\",\n \"precio\": 20000,\n \"informacion\": \"Exito\",\n \"estado\":\"Bueno\",\n \"disponible\": true,\n \"duenio\":null\n },\n\n\"metodoPago\":\n{\n\t\"pago\": \"TAJETACREDITO\",\n    \"numeroTarjeta\": 973965,\n    \"cuentaPSE\": null,\n    \"montoPagado\": 20000\n}\n\n\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/pedidos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un Pedido Rechazado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0c456f3-f313-4f2a-9b98-07d8361b111e",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id_p\",data.id);",
+							"tests[\"no genera error en el Post\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"tipo\":\"COMPRA\",\n \"aceptado\":true,\n \"observacion\":null,\n \"envio\": null,\n \"fechaGeneracion\":\"2000-05-05T00:00:00-05:00\",\n \"vinilosIntercambio\": null,\n \"viniloCompra\":\n {\n \"nombre\":\"Si\",\n \"anio\": 2010,\n \"coleccion\":\"Lo del 2010\",\n \"precio\": 20000,\n \"informacion\": \"Exito\",\n \"estado\":\"Bueno\",\n \"disponible\": true,\n \"duenio\":null\n },\n\n\"metodoPago\":\n{\n\t\"pago\": \"TAJETACREDITO\",\n    \"numeroTarjeta\": 973965,\n    \"cuentaPSE\": null,\n    \"montoPagado\": 20000\n}\n\n\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/pedidos",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un Pedido",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"aceptado\": false,\n    \"fechaGeneracion\": \"2000-05-14T05:00:00Z[UTC]\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/pedidos/{{new_id_p}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"pedidos",
+						"{{new_id_p}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un Pedido Erroneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e76e31a-aea0-4071-acab-de6c9d0618fa",
+						"exec": [
+							"tests[\"No se deberia obtener un pedido con un id que no existe\"] = responseCode.code === 404;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/pedidos/-1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"pedidos",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un Pedido Erroneo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5db0dcb-789b-4fc5-95c9-28d277a63521",
+						"exec": [
+							"tests[\"No se deberia actualizar un autor con id que no existe\"] = responseCode.code === 404;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"aceptado\": false,\n    \"fechaGeneracion\": \"2000-05-14T05:00:00Z[UTC]\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/pedidos/-1",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"pedidos",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un Pedido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51f29407-221a-41df-99c3-543baab991a8",
+						"exec": [
+							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/pedidos/{{new_id_p}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"pedidos",
+						"{{new_id_p}}"
+					]
 				}
 			},
 			"response": []
