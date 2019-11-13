@@ -49,11 +49,15 @@ public enum TipoPedido
 
        
     @PodamExclude
-    @OneToOne
+    @OneToOne(
+        mappedBy = "pedidoCompra",
+    	cascade = CascadeType.PERSIST,
+    	fetch = FetchType.EAGER
+    )
     private ViniloEntity viniloCompra;
 
     @PodamExclude
-    @OneToMany(mappedBy = "pedidoIntercambio", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "pedidoIntercambio")
     private List<ViniloEntity> vinilosIntercambio;
     
     @PodamExclude

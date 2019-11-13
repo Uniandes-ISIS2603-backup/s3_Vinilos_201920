@@ -86,7 +86,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
         return vinilosGenero;
     }
     @PodamExclude
-    @OneToOne
+    //@OneToOne(mappedBy = "viniloCompra", cascade = CascadeType.PERSIST)
     private PedidoEntity pedidoCompra;
     
     @PodamExclude
