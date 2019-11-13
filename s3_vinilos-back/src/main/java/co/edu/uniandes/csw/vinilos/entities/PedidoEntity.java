@@ -49,7 +49,7 @@ public enum TipoPedido
 
        
     @PodamExclude
-    @OneToOne(mappedBy = "pedidoCompra", cascade = CascadeType.PERSIST)
+    @OneToOne
     private ViniloEntity viniloCompra;
 
     @PodamExclude
@@ -61,7 +61,7 @@ public enum TipoPedido
     private EnvioEntity envio;
     
     @PodamExclude
-    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToOne
     private MetodoDePagoEntity metodoPago;
 
     /**

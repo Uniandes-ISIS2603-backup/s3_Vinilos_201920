@@ -81,6 +81,7 @@ public class PedidoResource {
             throw new WebApplicationException("El recurso /pedidos/" + pedidosId + " no existe.", 404);
         }
         PedidoDetailDTO detailDTO = new PedidoDetailDTO(pedidoEntity);
+ 
         LOGGER.log(Level.INFO, "PedidoResource getPedido: output: {0}", detailDTO);
         return detailDTO;
     }

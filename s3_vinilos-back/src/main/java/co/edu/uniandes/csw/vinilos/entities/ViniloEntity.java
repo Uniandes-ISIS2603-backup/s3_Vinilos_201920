@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vinilos.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -74,7 +75,7 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private List<ViniloEntity> vinilosIntercambio = new ArrayList<ViniloEntity>();;
 
     @PodamExclude
-    @OneToOne
+    @OneToOne(mappedBy = "pedidoCompra", cascade = CascadeType.PERSIST)
     private PedidoEntity pedidoCompra;
     
     @PodamExclude

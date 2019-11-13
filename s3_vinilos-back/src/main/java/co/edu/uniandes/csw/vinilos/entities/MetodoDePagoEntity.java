@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.vinilos.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -29,7 +31,7 @@ public class MetodoDePagoEntity extends BaseEntity implements Serializable {
     private Pago pago;
     
     @PodamExclude
-    @OneToOne
+    @OneToOne(mappedBy = "metodoPago", fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
     private PedidoEntity pedido;
 
     public long getNumeroTarjeta() {
