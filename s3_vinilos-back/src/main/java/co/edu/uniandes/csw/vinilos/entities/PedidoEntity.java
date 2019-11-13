@@ -57,7 +57,7 @@ public enum TipoPedido
     private List<ViniloEntity> vinilosIntercambio;
     
     @PodamExclude
-    @OneToOne(mappedBy = "pedido", fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "pedidos", fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
     private EnvioEntity envio;
     
     @PodamExclude

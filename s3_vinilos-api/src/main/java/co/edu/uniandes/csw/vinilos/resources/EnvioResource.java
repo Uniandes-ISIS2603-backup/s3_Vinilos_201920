@@ -20,7 +20,9 @@ import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -43,14 +45,14 @@ public class EnvioResource {
      * @return El envio dto.
      */
       @POST
-      public EnvioDTO createEnviooDTO(EnvioDTO envio) throws BusinessLogicException
+      public EnvioDTO createEnvioDTO(EnvioDTO envio) throws BusinessLogicException
       {
            EnvioEntity envioEntity = envio.toEntity();
         // Invoca la lógica para crear el pedido nueva
         EnvioEntity nuevoEnvioEntity = envioLogic.createEnvio(envioEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
-        EnvioDTO nuevoEnvioDTO = new EnvioDTO(nuevoEnvioEntity);
-        return nuevoEnvioDTO;
+        return new EnvioDTO(nuevoEnvioEntity);
+        
       }
       
       @GET
@@ -59,6 +61,19 @@ public class EnvioResource {
         List<EnvioDTO> listaEnvios = listEntityPedidos(envioLogic.getEnvio());
         //LOGGER.log(Level.INFO, "PedidoResource getPedidos: output: {0}", listaEnvios);
         return listaEnvios;
+    }
+    
+    @GET
+    @Path("{envioId:\\d+}")
+    public EnvioDTO getEnvio(@PathParam("envioId") long id )
+    {
+        EnvioEntity envioEntity = envioLogic.getEnvio(id);
+        if(envioEntity ==null)
+        {
+            throw new WebApplicationException("El recurso /envio/"+ id+ "no existe.", 404);
+        }
+        EnvioDTO envioDTO = new EnvioDTO(envioEntity);
+        return envioDTO;
     }
     
     private List<EnvioDTO> listEntityPedidos(List<EnvioEntity> entityList) {

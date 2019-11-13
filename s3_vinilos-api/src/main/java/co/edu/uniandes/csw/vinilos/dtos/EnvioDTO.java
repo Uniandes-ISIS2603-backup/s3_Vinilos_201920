@@ -98,7 +98,7 @@ public class EnvioDTO implements Serializable
  /**
      * Constructor a partir de la entidad
      *
-     * @param EnvioDTO La entidad del envio
+     * @param envioEntity
      */
     public EnvioDTO(EnvioEntity envioEntity) 
     {
@@ -127,7 +127,8 @@ public class EnvioDTO implements Serializable
         EnvioEntity envioEntity = new EnvioEntity();
         envioEntity.setEnviado(this.fueEnviado);
         envioEntity.setFecha(this.fecha);
-        envioEntity.setPedido(this.pedido.toEntity());
+        envioEntity.setId(this.id);
+        //envioEntity.setPedido(this.pedido.toEntity());
         
        
         return envioEntity;

@@ -37,21 +37,22 @@ public class EnvioEntity extends BaseEntity implements Serializable
      */
     @PodamExclude
     @OneToOne
-    private PedidoEntity pedido;
+    
+    private PedidoEntity pedidos;
 
     /**
      *pedir pedido
      * @param pedido 
      */
     public void setPedido(PedidoEntity pedido) {
-        this.pedido = pedido;
+        this.pedidos = pedido;
     }
 /**
  * dar la entidad de pedido
  * @return el pedido
  */
     public PedidoEntity getPedido() {
-        return pedido;
+        return pedidos;
     }
     /**
      * dar fecha
