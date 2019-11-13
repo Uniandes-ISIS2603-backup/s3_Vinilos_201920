@@ -6,8 +6,11 @@
 package co.edu.uniandes.csw.vinilos.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -78,5 +81,17 @@ public class GeneroEntity extends BaseEntity implements Serializable {
      */
     public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
+    }
+    
+     @PodamExclude
+    @OneToMany(mappedBy = "vinilosGenero")
+   private List<ViniloEntity> vinilos = new ArrayList<ViniloEntity>();
+
+    public void setVinilos(List<ViniloEntity> vinilos) {
+        this.vinilos = vinilos;
+    }
+
+    public List<ViniloEntity> getVinilos() {
+        return vinilos;
     }
 }

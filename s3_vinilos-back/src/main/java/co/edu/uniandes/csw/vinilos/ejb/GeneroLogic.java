@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.vinilos.ejb;
 import co.edu.uniandes.csw.vinilos.entities.GeneroEntity;
 import co.edu.uniandes.csw.vinilos.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.vinilos.persistence.GeneroPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -28,6 +29,14 @@ public class GeneroLogic {
        return genero;  
     }
      
+       public List<GeneroEntity> getBooks() 
+       {
+        
+        List<GeneroEntity> books = generos.findAll();
+        
+        return books;
+    }
+     
    public GeneroEntity getGenero(Long generoId) 
    {
        GeneroEntity genero = generos.find(generoId);
@@ -35,7 +44,7 @@ public class GeneroLogic {
    }
 
     
-   public GeneroEntity updateGenero( GeneroEntity generoEntity) throws BusinessLogicException 
+   public GeneroEntity updateGenero( Long generoId,GeneroEntity generoEntity) throws BusinessLogicException 
    {
        if(generoEntity.getNombre()==null){
             throw new BusinessLogicException("El nombre del genero está vacío");

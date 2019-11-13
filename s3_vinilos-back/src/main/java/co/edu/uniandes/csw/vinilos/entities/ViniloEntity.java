@@ -74,6 +74,17 @@ public class ViniloEntity extends BaseEntity implements Serializable{
     private List<ViniloEntity> vinilosIntercambio = new ArrayList<ViniloEntity>();;
 
     @PodamExclude
+    @ManyToOne
+    private GeneroEntity vinilosGenero;
+
+    public void setVinilosGenero(GeneroEntity vinilosGenero) {
+        this.vinilosGenero = vinilosGenero;
+    }
+
+    public GeneroEntity getVinilosGenero() {
+        return vinilosGenero;
+    }
+    @PodamExclude
     @OneToOne
     private PedidoEntity pedidoCompra;
     

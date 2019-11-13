@@ -64,6 +64,10 @@ public class GeneroDTO implements Serializable
         this.id = generoEntity.getId();
         this.nombre = generoEntity.getNombre();
     }
+    public GeneroDTO()
+    {
+    
+    }
   /**
      * Método para transformar el DTO a una entidad.
      *

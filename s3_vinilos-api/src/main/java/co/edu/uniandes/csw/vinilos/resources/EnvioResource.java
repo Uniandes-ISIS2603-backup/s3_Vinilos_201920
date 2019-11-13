@@ -43,14 +43,14 @@ public class EnvioResource {
      * @return El envio dto.
      */
       @POST
-      public EnvioDTO createEnviooDTO(EnvioDTO envio) throws BusinessLogicException
+      public EnvioDTO createEnvioDTO(EnvioDTO envio) throws BusinessLogicException
       {
            EnvioEntity envioEntity = envio.toEntity();
         // Invoca la lógica para crear el pedido nueva
         EnvioEntity nuevoEnvioEntity = envioLogic.createEnvio(envioEntity);
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
-        EnvioDTO nuevoEnvioDTO = new EnvioDTO(nuevoEnvioEntity);
-        return nuevoEnvioDTO;
+        return new EnvioDTO(nuevoEnvioEntity);
+        
       }
       
       @GET
