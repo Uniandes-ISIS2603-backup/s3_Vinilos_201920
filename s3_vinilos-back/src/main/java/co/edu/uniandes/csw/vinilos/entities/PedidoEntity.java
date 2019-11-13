@@ -47,13 +47,8 @@ public enum TipoPedido
     @ManyToOne
     private UsuarioEntity usuario;
 
-       
     @PodamExclude
-    @OneToOne(
-        mappedBy = "pedidoCompra",
-    	cascade = CascadeType.PERSIST,
-    	fetch = FetchType.EAGER
-    )
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private ViniloEntity viniloCompra;
 
     @PodamExclude
@@ -61,11 +56,11 @@ public enum TipoPedido
     private List<ViniloEntity> vinilosIntercambio;
     
     @PodamExclude
-    @OneToOne(mappedBy = "pedidos", fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
+    @OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.PERSIST)
     private EnvioEntity envio;
-    
+   
     @PodamExclude
-    @OneToOne
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
     private MetodoDePagoEntity metodoPago;
 
     /**
