@@ -33,7 +33,7 @@ public class UsuarioLogic {
      */
     public UsuarioEntity createUsuario(UsuarioEntity usuario) throws BusinessLogicException{
         
-        if(persistence.findbyEMail(usuario.getCorreo()) != null){
+        if(persistence.findPorCorreo(usuario.getCorreo()) != null){
             throw new BusinessLogicException("Ya existe un usuario con ese correo");
         }
         if(usuario.getNombre() == null){
@@ -77,6 +77,16 @@ public class UsuarioLogic {
      */
     public UsuarioEntity getUsuario(Long usuarioId){
         UsuarioEntity usuario = persistence.find(usuarioId);
+        return usuario;
+    }
+    
+    /**
+     * Retorna el usuario según su correo
+     * @param usuarioCorreo correo del usaurio
+     * @return usuario deseado
+     */
+    public UsuarioEntity getUsuarioPorCorreo(String usuarioCorreo){
+        UsuarioEntity usuario = persistence.findPorCorreo(usuarioCorreo); 
         return usuario;
     }
     

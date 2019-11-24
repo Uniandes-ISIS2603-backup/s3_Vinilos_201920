@@ -57,7 +57,7 @@ public class UsuarioPersistence {
      * @param correo email
      * @return usuario
      */
-    public UsuarioEntity findbyEMail(String correo){
+    public UsuarioEntity findPorCorreo(String correo){
         TypedQuery<UsuarioEntity> query = em.createQuery("select e from UsuarioEntity e where e.correo = :correo", UsuarioEntity.class);
         query = query.setParameter("correo", correo);
         List<UsuarioEntity> sameName = query.getResultList();
