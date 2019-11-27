@@ -177,6 +177,42 @@
 			"response": []
 		},
 		{
+			"name": "Da un usuario por correo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0d558f82-d5ba-42d2-b1fd-4557bf5f46bf",
+						"exec": [
+							"console.log(responseBody);",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"No genera error en el Get\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/usuarios/{{new_correo}}",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"usuarios",
+						"{{new_correo}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Edita un usuario",
 			"event": [
 				{
