@@ -48,15 +48,16 @@ public class ViniloResource {
    }
    
    @GET
-   @Path("(vinilosId: \\d+)")
-   public ViniloDetailDTO getVinilo(@PathParam("vinilosId") Long vinilosId){
+   @Path("{vinilosId: \\d+}")
+  
+   public ViniloDetailDTO getVinilo(@PathParam("vinilosId") Long vinilosId) throws WebApplicationException {
    
        ViniloEntity entidad = logica.getVinilo(vinilosId);
        if(entidad == null){
            throw new WebApplicationException("El recurso /vinilos/" + vinilosId + "no existe.", 404);
        }
-       
-       return new ViniloDetailDTO(entidad);
+       ViniloDetailDTO vinilo = new ViniloDetailDTO(entidad);
+       return vinilo;
     }
    
    @GET

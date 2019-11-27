@@ -19,7 +19,6 @@ public class ViniloDetailDTO extends ViniloDTO implements Serializable{
     private List<ViniloDTO> vinilosIntercambio;
     
     public ViniloDetailDTO() {
-        super();
     }
     
     public ViniloDetailDTO(ViniloEntity viniloEntity) {

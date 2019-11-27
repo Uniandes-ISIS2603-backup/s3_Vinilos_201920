@@ -46,9 +46,6 @@ public class ViniloLogic {
     
     public ViniloEntity getVinilo(Long vinilosId){
         ViniloEntity viniloEntity = persistence.find(vinilosId);
-        if(viniloEntity == null){
-            
-        }
         return viniloEntity;
     }
     
