@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -65,8 +64,8 @@ public class UsuarioResource {
      * @return usuarioDetailDTO
      */
     @GET
-    @Path("(usuariosId: \\d+)")
-    public UsuarioDetailDTO getUsuario(@PathParam("usuariosId") Long usuariosId){
+    @Path("{usuariosId: \\d+}")
+    public UsuarioDetailDTO getUsuario(@PathParam("usuariosId") Long usuariosId)throws WebApplicationException{
        UsuarioEntity entidad = logica.getUsuario(usuariosId);
        if(entidad == null){
            throw new WebApplicationException("El recurso /usuarios/" + usuariosId + "no existe.", 404);
@@ -78,16 +77,16 @@ public class UsuarioResource {
      * Retorna un usuario por su id
      * @param usuariosCorreo correo del usuario
      * @return usuarioDetailDTO
-     */
+     
     @GET
-    @Path("(usuariosCorreo: \\d+)")
-    public UsuarioDetailDTO getUsuarioPorCorreo(@PathParam("usuariosCorreo") String usuariosCorreo){
+    @Path("{usuariosCorreo: \\d+}")
+    public UsuarioDetailDTO getUsuarioPorCorreo(@PathParam("usuariosCorreo") String usuariosCorreo)throws WebApplicationException{
        UsuarioEntity entidad = logica.getUsuarioPorCorreo(usuariosCorreo);
        if(entidad == null){
            throw new WebApplicationException("El recurso /usuarios/" + usuariosCorreo + "no existe.", 404);
        }
        return new UsuarioDetailDTO(entidad);
-    }
+    }*/
     
     /**
      * Da los usuarios
