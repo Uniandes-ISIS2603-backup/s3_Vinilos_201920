@@ -52,7 +52,7 @@ public class ArtistaResource {
     
     /*Retorna al artista*/
    @GET
-   @Path("(artistasId: \\d+)")
+   @Path("{artistasId: \\d+}")
    public ArtistaDetailDTO getArtista(@PathParam("artistasId") Long artistasId){
    
        ArtistaEntity entidad = logica.getArtista(artistasId);

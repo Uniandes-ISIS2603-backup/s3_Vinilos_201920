@@ -62,7 +62,7 @@ public class UsuarioResource {
      * Retorna un usuario por su id
      * @param usuariosId id del usuario
      * @return usuarioDetailDTO
-     */
+    
     @GET
     @Path("{usuariosId: \\d+}")
     public UsuarioDetailDTO getUsuario(@PathParam("usuariosId") Long usuariosId)throws WebApplicationException{
@@ -71,22 +71,23 @@ public class UsuarioResource {
            throw new WebApplicationException("El recurso /usuarios/" + usuariosId + "no existe.", 404);
        }
        return new UsuarioDetailDTO(entidad);
-    }
+    }*/
     
     /**
      * Retorna un usuario por su id
      * @param usuariosCorreo correo del usuario
      * @return usuarioDetailDTO
-     
+     */
     @GET
     @Path("{usuariosCorreo: \\d+}")
     public UsuarioDetailDTO getUsuarioPorCorreo(@PathParam("usuariosCorreo") String usuariosCorreo)throws WebApplicationException{
-       UsuarioEntity entidad = logica.getUsuarioPorCorreo(usuariosCorreo);
+      System.out.println(usuariosCorreo);
+        UsuarioEntity entidad = logica.getUsuarioPorCorreo(usuariosCorreo);
        if(entidad == null){
            throw new WebApplicationException("El recurso /usuarios/" + usuariosCorreo + "no existe.", 404);
        }
        return new UsuarioDetailDTO(entidad);
-    }*/
+    }
     
     /**
      * Da los usuarios
