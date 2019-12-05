@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "b3d35f76-d23d-438d-9a38-ed9dbf1a30ba",
+		"name": "Generos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Rock\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero pop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Jazz\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/jazz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Pop\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/B&R",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"B&R\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/flamengo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"B&R\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Tango",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Tango\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Alternativo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Alternativo\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Baladas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Baladas\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Infantil",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Infantil\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Andino",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Andino\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Folklore",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Flolklore\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Reggae",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Reggae\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Salsa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Salsa\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/House",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"House\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Dance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Dance\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Merengue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Merenge\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero/Vallenatos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\":\"Vallenatos\"\n}\n\n"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s3_vinilos-api/api/genero",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s3_vinilos-api",
+						"api",
+						"genero"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
